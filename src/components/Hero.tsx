@@ -11,23 +11,25 @@ export default function Hero() {
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
 
-  const bgImage = getImageByKey(cmsData, 'hero_bg') || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80'
+  const bgImage = getImageByKey(cmsData, 'hero_bg')
   const title = getContentByKey(cmsData, 'hero_title', locale) || ''
   const subtitle = getContentByKey(cmsData, 'hero_subtitle', locale) || ''
   const ctaText = getContentByKey(cmsData, 'hero_cta_text', locale) || t('cta')
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${bgImage})`
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a5c]/90 to-[#2d5a87]/80" />
-      </div>
+      {/* Background Image - Only show if configured */}
+      {bgImage && (
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${bgImage})`
+          }}
+        >
+          {/* Overlay - Lighter blue */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a5c]/85 to-[#3d7ab5]/75" />
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative z-10 w-full px-4 lg:px-16 py-32">
@@ -57,7 +59,7 @@ export default function Hero() {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }
             }}
-            className="inline-flex items-center gap-2 bg-[#4fa3e8] hover:bg-[#3d8fd4] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#8ed0f7] hover:bg-[#7ac4f0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
           >
             {ctaText}
             <ArrowRight size={20} />
@@ -67,7 +69,7 @@ export default function Hero() {
         {/* Decorative Elements */}
         <div className="absolute bottom-8 right-8 hidden lg:block">
           <div className="flex gap-4">
-            <div className="w-2 h-2 bg-[#4fa3e8] rounded-full" />
+            <div className="w-2 h-2 bg-[#8ed0f7] rounded-full" />
             <div className="w-2 h-2 bg-white/50 rounded-full" />
             <div className="w-2 h-2 bg-white/50 rounded-full" />
             <div className="w-2 h-2 bg-white/50 rounded-full" />
