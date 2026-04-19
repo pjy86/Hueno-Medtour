@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { useCMS, getImageByKey, getContentByKey } from '@/components/CMSProvider'
-import { CMSContent, CMSImage } from '@/lib/cms'
 
 export default function Hero() {
   const t = useTranslations('hero')
@@ -12,10 +11,10 @@ export default function Hero() {
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
 
-  const bgImage = getImageByKey(cmsData as { images: CMSImage[] } | null, 'hero_bg') || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80'
-  const title = getContentByKey(cmsData as { contents: CMSContent[] } | null, 'hero_title', locale) || ''
-  const subtitle = getContentByKey(cmsData as { contents: CMSContent[] } | null, 'hero_subtitle', locale) || ''
-  const ctaText = getContentByKey(cmsData as { contents: CMSContent[] } | null, 'hero_cta_text', locale) || t('cta')
+  const bgImage = getImageByKey(cmsData, 'hero_bg') || 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80'
+  const title = getContentByKey(cmsData, 'hero_title', locale) || ''
+  const subtitle = getContentByKey(cmsData, 'hero_subtitle', locale) || ''
+  const ctaText = getContentByKey(cmsData, 'hero_cta_text', locale) || t('cta')
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

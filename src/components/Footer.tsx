@@ -5,17 +5,15 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { Phone, MapPin, Facebook, Instagram, MessageCircle, Mail } from 'lucide-react'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
-import { CMSContent } from '@/lib/cms'
 
 export default function Footer() {
   const t = useTranslations('footer')
-  const tNav = useTranslations('nav')
   const params = useParams()
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
 
   const logoUrl = getImageByKey(cmsData, 'logo_header')
-  const phone = getContentByKey(cmsData as { contents: CMSContent[] } | null, 'footer_phone', locale) || t('phone')
+  const phone = getContentByKey(cmsData, 'footer_phone', locale) || t('phone')
 
   const staticAddress = 'Building 10, Minjie Shangcheng International\nWanbo Business District, Nancun Town\nPanyu District, Guangzhou\nGuangdong Province, P.R.China'
 

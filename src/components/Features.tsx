@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { Shield, Award, Wallet, Heart } from 'lucide-react'
 import { useCMS, getContentByKey } from '@/components/CMSProvider'
-import { CMSContent } from '@/lib/cms'
 
 const icons = {
   professional: Award,
@@ -20,29 +19,29 @@ export default function Features() {
   const cmsData = useCMS()
 
   const features = [
-    { 
-      key: 'professional', 
+    {
+      key: 'professional',
       icon: icons.professional,
-      title: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_1_title', locale) || t('professional.title'),
-      desc: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_1_desc', locale) || t('professional.desc')
+      title: getContentByKey(cmsData, 'feature_1_title', locale) || t('professional.title'),
+      desc: getContentByKey(cmsData, 'feature_1_desc', locale) || t('professional.desc')
     },
-    { 
-      key: 'safe', 
+    {
+      key: 'safe',
       icon: icons.safe,
-      title: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_2_title', locale) || t('safe.title'),
-      desc: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_2_desc', locale) || t('safe.desc')
+      title: getContentByKey(cmsData, 'feature_2_title', locale) || t('safe.title'),
+      desc: getContentByKey(cmsData, 'feature_2_desc', locale) || t('safe.desc')
     },
-    { 
-      key: 'costEffective', 
+    {
+      key: 'costEffective',
       icon: icons.costEffective,
-      title: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_3_title', locale) || t('costEffective.title'),
-      desc: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_3_desc', locale) || t('costEffective.desc')
+      title: getContentByKey(cmsData, 'feature_3_title', locale) || t('costEffective.title'),
+      desc: getContentByKey(cmsData, 'feature_3_desc', locale) || t('costEffective.desc')
     },
-    { 
-      key: 'caring', 
+    {
+      key: 'caring',
       icon: icons.caring,
-      title: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_4_title', locale) || t('caring.title'),
-      desc: getContentByKey(cmsData as { contents: CMSContent[] } | null, 'feature_4_desc', locale) || t('caring.desc')
+      title: getContentByKey(cmsData, 'feature_4_title', locale) || t('caring.title'),
+      desc: getContentByKey(cmsData, 'feature_4_desc', locale) || t('caring.desc')
     }
   ]
 
