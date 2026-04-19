@@ -27,7 +27,7 @@ export default function Hero() {
           }}
         >
           {/* Overlay - Lighter blue */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a5c]/85 to-[#3d7ab5]/75" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a5c]/60 to-[#3d7ab5]/50" />
         </div>
       )}
 
