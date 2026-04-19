@@ -70,7 +70,7 @@ export default function Services() {
                 className="flex flex-col items-center text-center p-4"
               >
                 {/* Square Image - Responsive */}
-                <div className="w-20 sm:w-24 md:w-28 lg:w-32 h-20 sm:h-24 md:h-28 lg:h-32 overflow-hidden mb-4 flex-shrink-0">
+                <div className="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 overflow-hidden mb-4 flex-shrink-0">
                   {service.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img

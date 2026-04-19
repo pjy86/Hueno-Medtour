@@ -30,12 +30,12 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 lg:px-8 py-32">
-        <div className="max-w-3xl mx-auto">
+      <div className="relative z-10 w-full px-4 lg:px-16 py-32">
+        <div className="max-w-3xl">
           {/* Main Title - Rich Text */}
           {title && (
             <h1
-              className="font-bold text-white mb-6 leading-tight"
+              className="font-bold text-white mb-6 leading-tight text-left"
               style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
               dangerouslySetInnerHTML={{ __html: title }}
             />
@@ -44,7 +44,7 @@ export default function Hero() {
           {/* Subtitle - Rich Text */}
           {subtitle && (
             <div
-              className="text-xl md:text-2xl text-white/90 mb-8"
+              className="text-xl md:text-2xl text-white/90 mb-8 text-left"
               dangerouslySetInnerHTML={{ __html: subtitle }}
             />
           )}
