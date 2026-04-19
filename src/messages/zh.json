@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "news": "新闻资讯",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "title": "来华就医就这么简单",
+    "subtitle": "专业 · 安全 · 高性价比 · 贴心服务",
+    "cta": "立即咨询"
+  },
+  "features": {
+    "title": "为什么选择我们",
+    "professional": {
+      "title": "专业",
+      "desc": "专业的医疗团队，经验丰富"
+    },
+    "safe": {
+      "title": "安全",
+      "desc": "完善的安全保障体系"
+    },
+    "costEffective": {
+      "title": "高性价比",
+      "desc": "费用透明合理"
+    },
+    "caring": {
+      "title": "贴心服务",
+      "desc": "全程贴心服务"
+    }
+  },
+  "services": {
+    "title": "我们的服务",
+    "service1": {
+      "title": "医疗咨询",
+      "desc": "专家诊断与治疗方案"
+    },
+    "service2": {
+      "title": "医院安排",
+      "desc": "便捷的入院手续"
+    },
+    "service3": {
+      "title": "住宿安排",
+      "desc": "临近医疗机构的舒适住宿"
+    },
+    "service4": {
+      "title": "后续护理",
+      "desc": "治疗后的持续跟进"
+    }
+  },
+  "testimonials": {
+    "title": "成功案例"
+  },
+  "contact": {
+    "title": "免费咨询",
+    "name": "您的姓名",
+    "email": "电子邮箱",
+    "phone": "电话号码",
+    "country": "国家",
+    "message": "您的留言",
+    "submit": "提交",
+    "success": "感谢您的留言！我们会尽快与您联系。",
+    "error": "提交失败，请重试。"
+  },
+  "footer": {
+    "address": "中国北京市朝阳区医疗中心路123号",
+    "phone": "400-888-8888",
+    "copyright": "All We Care About Is Your Health.©2026 HuenoMedtourChina. All Rights Reserved"
+  }
+}

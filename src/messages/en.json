@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "news": "News",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "title": "Medical Travel to China Made Simple",
+    "subtitle": "Professional · Safe · Cost-effective · Caring",
+    "cta": "Contact Us Now"
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "professional": {
+      "title": "Professional",
+      "desc": "Professional medical team with extensive experience"
+    },
+    "safe": {
+      "title": "Safe",
+      "desc": "Comprehensive safety guarantee system"
+    },
+    "costEffective": {
+      "title": "Cost-effective",
+      "desc": "Transparent and reasonable fees"
+    },
+    "caring": {
+      "title": "Caring",
+      "desc": "Thoughtful service throughout your journey"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "service1": {
+      "title": "Medical Consultation",
+      "desc": "Expert diagnosis and treatment planning"
+    },
+    "service2": {
+      "title": "Hospital Arrangement",
+      "desc": "Streamlined admission procedures"
+    },
+    "service3": {
+      "title": "Accommodation",
+      "desc": "Comfortable stay near medical facilities"
+    },
+    "service4": {
+      "title": "Follow-up Care",
+      "desc": "Continuous support after treatment"
+    }
+  },
+  "testimonials": {
+    "title": "Success Stories"
+  },
+  "contact": {
+    "title": "Free consultation",
+    "name": "Your Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "country": "Country",
+    "message": "Your Message",
+    "submit": "Submit",
+    "success": "Thank you! We will contact you soon.",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "address": "123 Medical Center Road, Chaoyang District, Beijing, China",
+    "phone": "400-888-8888",
+    "copyright": "All We Care About Is Your Health.©2026 HuenoMedtourChina. All Rights Reserved"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "services": "Layanan",
+    "news": "Berita",
+    "contact": "Hubungi Kami"
+  },
+  "hero": {
+    "title": "Perjalanan Medis ke China Dibuat Mudah",
+    "subtitle": "Profesional · Aman · Terjangkau · Penuh Perhatian",
+    "cta": "Hubungi Kami Sekarang"
+  },
+  "features": {
+    "title": "Mengapa Memilih Kami",
+    "professional": {
+      "title": "Profesional",
+      "desc": "Tim medis profesional dengan pengalaman luas"
+    },
+    "safe": {
+      "title": "Aman",
+      "desc": "Sistem jaminan keamanan menyeluruh"
+    },
+    "costEffective": {
+      "title": "Terjangkau",
+      "desc": "Biaya transparan dan wajar"
+    },
+    "caring": {
+      "title": "Penuh Perhatian",
+      "desc": "Layanan penuh perhatian sepanjang perjalanan"
+    }
+  },
+  "services": {
+    "title": "Layanan Kami",
+    "service1": {
+      "title": "Konsultasi Medis",
+      "desc": "Diagnosis ahli dan perencanaan perawatan"
+    },
+    "service2": {
+      "title": "Pengaturan Rumah Sakit",
+      "desc": "Prosedur masuk yang streamlined"
+    },
+    "service3": {
+      "title": "Akomodasi",
+      "desc": "Penginapan nyaman dekat fasilitas medis"
+    },
+    "service4": {
+      "title": "Perawatan Lanjutan",
+      "desc": "Dukungan berkelanjutan setelah perawatan"
+    }
+  },
+  "testimonials": {
+    "title": "Kisah Sukses"
+  },
+  "contact": {
+    "title": "Konsultasi Gratis",
+    "name": "Nama Anda",
+    "email": "Alamat Email",
+    "phone": "Nomor Telepon",
+    "country": "Negara",
+    "message": "Pesan Anda",
+    "submit": "Kirim",
+    "success": "Terima kasih! Kami akan menghubungi Anda segera.",
+    "error": "Terjadi kesalahan. Silakan coba lagi."
+  },
+  "footer": {
+    "address": "Jalan Pusat Medis 123, Distrik Chaoyang, Beijing, Tiongkok",
+    "phone": "400-888-8888",
+    "copyright": "All We Care About Is Your Health.©2026 HuenoMedtourChina. All Rights Reserved"
+  }
+}

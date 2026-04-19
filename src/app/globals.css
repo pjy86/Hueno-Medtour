@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root {
+  --primary: #1a3a5c;
+  --primary-light: #2d5a87;
+  --accent: #4fa3e8;
+  --accent-hover: #3d8fd4;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+main {
+  padding-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding-top: 5rem;
+  }
+}
+
+/* Rich text responsive font sizing */
+.rich-text-content p,
+.rich-text-content span,
+.rich-text-content font,
+.rich-text-content div {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.rich-text-content * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
