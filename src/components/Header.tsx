@@ -62,28 +62,28 @@ export default function Header() {
             <a
               href="#top"
               onClick={(e) => handleNavClick(e, 'top')}
-              className="text-sm font-medium hover:text-[#5cb3f0] transition-colors cursor-pointer"
+              className="text-sm font-medium hover:text-[#7ac4f5] transition-colors cursor-pointer"
             >
               {t('home')}
             </a>
             <a
               href="#why-choose-hueno"
               onClick={(e) => handleNavClick(e, 'why-choose-hueno')}
-              className="text-sm font-medium hover:text-[#5cb3f0] transition-colors cursor-pointer"
+              className="text-sm font-medium hover:text-[#7ac4f5] transition-colors cursor-pointer"
             >
               {t('about')}
             </a>
             <a
               href="#our-services"
               onClick={(e) => handleNavClick(e, 'our-services')}
-              className="text-sm font-medium hover:text-[#5cb3f0] transition-colors cursor-pointer"
+              className="text-sm font-medium hover:text-[#7ac4f5] transition-colors cursor-pointer"
             >
               {t('services')}
             </a>
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, 'contact')}
-              className="text-sm font-medium hover:text-[#5cb3f0] transition-colors cursor-pointer"
+              className="text-sm font-medium hover:text-[#7ac4f5] transition-colors cursor-pointer"
             >
               {t('contact')}
             </a>
@@ -98,7 +98,7 @@ export default function Header() {
                   href={getLocalePath(locale.code)}
                   className={`px-2 py-1 rounded transition-colors ${
                     currentLocale === locale.code
-                      ? 'bg-[#5cb3f0] text-white'
+                      ? 'bg-[#7ac4f5] text-white'
                       : 'hover:bg-white/10'
                   }`}
                 >
@@ -159,7 +159,7 @@ export default function Header() {
                   href={getLocalePath(locale.code)}
                   className={`px-3 py-1 text-sm rounded transition-colors ${
                     currentLocale === locale.code
-                      ? 'bg-[#5cb3f0] text-white'
+                      ? 'bg-[#7ac4f5] text-white'
                       : 'hover:bg-white/10'
                   }`}
                 >
