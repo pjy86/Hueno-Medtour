@@ -59,7 +59,7 @@ export default function Hero() {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }
             }}
-            className="inline-flex items-center gap-2 bg-[#8ed0f7] hover:bg-[#7ac4f0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#a8ddf9] hover:bg-[#7ac4f0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
           >
             {ctaText}
             <ArrowRight size={20} />
@@ -69,7 +69,7 @@ export default function Hero() {
         {/* Decorative Elements */}
         <div className="absolute bottom-8 right-8 hidden lg:block">
           <div className="flex gap-4">
-            <div className="w-2 h-2 bg-[#8ed0f7] rounded-full" />
+            <div className="w-2 h-2 bg-[#a8ddf9] rounded-full" />
             <div className="w-2 h-2 bg-white/50 rounded-full" />
             <div className="w-2 h-2 bg-white/50 rounded-full" />
             <div className="w-2 h-2 bg-white/50 rounded-full" />
