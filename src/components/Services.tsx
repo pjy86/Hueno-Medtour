@@ -69,14 +69,14 @@ export default function Services() {
                 key={service.key}
                 className="flex flex-col items-center text-center p-4"
               >
-                {/* Square Image */}
-                <div className="w-32 h-32 overflow-hidden mb-4 flex-shrink-0">
+                {/* Square Image - Responsive */}
+                <div className="w-24 sm:w-32 md:w-36 lg:w-40 h-24 sm:h-32 md:h-36 lg:h-40 overflow-hidden mb-4 flex-shrink-0">
                   {service.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img 
-                      src={service.image} 
-                      alt="" 
-                      className="w-full h-full object-cover" 
+                    <img
+                      src={service.image}
+                      alt=""
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">
