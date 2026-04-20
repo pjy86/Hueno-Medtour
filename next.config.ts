@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: '**.aliyuncs.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.r2.dev'
       }
     ]
   }
