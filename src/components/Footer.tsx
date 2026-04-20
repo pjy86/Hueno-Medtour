@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Phone, MapPin, Facebook, Instagram, MessageCircle, Mail } from 'lucide-react'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
 
@@ -24,7 +25,7 @@ export default function Footer() {
           {/* Logo & Description */}
           <div>
             {logoUrl && (
-              <img src={logoUrl} alt="Logo" className="h-14 w-auto object-contain" />
+              <Image src={logoUrl} alt="Logo" width={56} height={56} className="h-14 w-auto object-contain" />
             )}
           </div>
 

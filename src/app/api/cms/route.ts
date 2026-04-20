@@ -12,7 +12,14 @@ export async function GET() {
       })
     ])
 
-    return NextResponse.json({ contents, images })
+    return NextResponse.json(
+      { contents, images },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300'
+        }
+      }
+    )
   } catch (error) {
     console.error('CMS GET Error:', error)
     return NextResponse.json(

@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
 
 export default function WhyChina() {
@@ -54,13 +55,14 @@ export default function WhyChina() {
                 className="flex flex-col items-center text-center"
               >
                 {/* 16:9 Image */}
-                <div className="w-full aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
+                <div className="w-full aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4 relative">
                   {item.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover" 
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gray-200">

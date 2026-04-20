@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
 
 export default function Services() {
@@ -70,13 +71,14 @@ export default function Services() {
                 className="flex flex-col items-center text-center p-4"
               >
                 {/* Square Image - Responsive */}
-                <div className="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 overflow-hidden mb-4 flex-shrink-0">
+                <div className="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 overflow-hidden mb-4 flex-shrink-0 relative">
                   {service.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={service.image}
                       alt=""
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">

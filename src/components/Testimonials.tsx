@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useCMS, getImageByKey } from '@/components/CMSProvider'
 
 export default function Testimonials() {
@@ -63,13 +64,14 @@ export default function Testimonials() {
           {images.map((img, index) => (
             <div
               key={img.key}
-              className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+              className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow relative"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src={img.url} 
-                alt={`Success story ${index + 1}`} 
-                className="w-full h-full object-cover" 
+              <Image
+                src={img.url}
+                alt={`Success story ${index + 1}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               />
             </div>
           ))}

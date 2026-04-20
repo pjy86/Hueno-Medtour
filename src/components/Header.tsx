@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Menu, X } from 'lucide-react'
@@ -53,7 +54,7 @@ export default function Header() {
             className="cursor-pointer"
           >
             {logoUrl && (
-              <img src={logoUrl} alt="Logo" className="h-12 lg:h-14 w-auto object-contain" />
+              <Image src={logoUrl} alt="Logo" width={56} height={56} className="h-12 lg:h-14 w-auto object-contain" />
             )}
           </a>
 

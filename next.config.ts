@@ -5,6 +5,8 @@ const withNextIntl = createnextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig: NextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
     remotePatterns: [
       {
         protocol: 'https',
@@ -13,6 +15,18 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'placeholder.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'aikang-medtour.onrender.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.render.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.aliyuncs.com'
       }
     ]
   }
