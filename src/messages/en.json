@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About Us",
-    "services": "Services",
-    "news": "News",
-    "contact": "Contact Us"
+    "checkup": "Checkup",
+    "stemCell": "Stem Cell",
+    "cancerOncology": "Cancer & Oncology",
+    "aboutUs": "About Us",
+    "freeConsultation": "Free consultation"
   },
   "hero": {
     "title": "Medical Travel to China Made Simple",

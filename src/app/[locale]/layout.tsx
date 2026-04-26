@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { CMSProvider } from '@/components/CMSProvider'
+import TopBar from '@/components/TopBar'
 
 type Props = {
   children: React.ReactNode
@@ -20,6 +21,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider messages={messages}>
       <CMSProvider>
+        <TopBar />
         {children}
       </CMSProvider>
     </NextIntlClientProvider>

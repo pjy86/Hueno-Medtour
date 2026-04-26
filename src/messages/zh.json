@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "首页",
-    "about": "关于我们",
-    "services": "服务",
-    "news": "新闻资讯",
-    "contact": "联系我们"
+    "checkup": "体检",
+    "stemCell": "干细胞",
+    "cancerOncology": "肿瘤",
+    "aboutUs": "关于我们",
+    "freeConsultation": "免费咨询"
   },
   "hero": {
     "title": "来华就医就这么简单",

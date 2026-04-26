@@ -17,7 +17,10 @@ export default function Hero() {
   const ctaText = getContentByKey(cmsData, 'hero_cta_text', locale) || t('cta')
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="top"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden scroll-mt-28"
+    >
       {/* Background Image - Only show if configured */}
       {bgImage && (
         <div

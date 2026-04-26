@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Beranda",
-    "about": "Tentang Kami",
-    "services": "Layanan",
-    "news": "Berita",
-    "contact": "Hubungi Kami"
+    "checkup": "Pemeriksaan",
+    "stemCell": "Sel Induk",
+    "cancerOncology": "Kanker & Onkologi",
+    "aboutUs": "Tentang Kami",
+    "freeConsultation": "Konsultasi gratis"
   },
   "hero": {
     "title": "Perjalanan Medis ke China Dibuat Mudah",

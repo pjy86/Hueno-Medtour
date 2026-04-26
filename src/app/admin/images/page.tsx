@@ -124,7 +124,12 @@ export default function ImagesPage() {
           </div>
 
           <div className="divide-y divide-gray-200">
-            {images.map(image => (
+            {images
+              .filter(image => {
+                // Hide feature_icon_4 (only keep 3 features)
+                return image.key !== 'feature_icon_4'
+              })
+              .map(image => (
               <div key={image.id} className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>

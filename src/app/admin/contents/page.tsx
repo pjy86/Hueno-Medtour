@@ -124,7 +124,11 @@ export default function ContentsPage() {
               .filter(content => {
                 // Hide service title fields (service_X_title)
                 const isServiceTitle = /^service_\d+_title$/.test(content.key)
-                return !isServiceTitle
+                if (isServiceTitle) return false
+                // Hide feature_4 fields (only keep 3 features)
+                const isFeature4 = /^feature_4_/.test(content.key)
+                if (isFeature4) return false
+                return true
               })
               .map(content => (
                 <div key={content.id} className="p-6">

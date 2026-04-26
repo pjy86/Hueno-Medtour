@@ -37,7 +37,7 @@ export default function Services() {
   }
 
   return (
-    <section id="our-services" className="py-20 bg-gray-50">
+    <section id="cancer-oncology" className="py-20 bg-gray-50 scroll-mt-28">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">

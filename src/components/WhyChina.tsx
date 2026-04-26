@@ -36,7 +36,7 @@ export default function WhyChina() {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section id="checkup" className="py-20 bg-white scroll-mt-28">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">

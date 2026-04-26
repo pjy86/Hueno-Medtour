@@ -16,8 +16,8 @@ export interface CMSData {
 }
 
 export function getContentByKey(data: CMSData | null, key: string, locale: string): string | null {
-  if (!data) return null
-  
+  if (!data || !Array.isArray(data.contents)) return null
+
   const content = data.contents.find(c => c.key === key)
   if (!content) return null
 
@@ -32,7 +32,7 @@ export function getContentByKey(data: CMSData | null, key: string, locale: strin
 }
 
 export function getImageByKey(data: CMSData | null, key: string): string | null {
-  if (!data) return null
+  if (!data || !Array.isArray(data.images)) return null
   const image = data.images.find(img => img.key === key)
   return image?.url || null
 }

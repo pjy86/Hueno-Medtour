@@ -15,13 +15,14 @@ async function main() {
 
     // Features section
     { key: 'feature_1_title', en: 'Professional', zh: '专业', id_text: 'Profesional' },
+    { key: 'feature_1_subtitle', en: '', zh: '', id_text: '' },
     { key: 'feature_1_desc', en: 'Professional medical team with extensive experience', zh: '专业的医疗团队，经验丰富', id_text: 'Tim medis profesional dengan pengalaman luas' },
     { key: 'feature_2_title', en: 'Safe', zh: '安全', id_text: 'Aman' },
+    { key: 'feature_2_subtitle', en: '', zh: '', id_text: '' },
     { key: 'feature_2_desc', en: 'Comprehensive safety guarantee system', zh: '完善的安全保障体系', id_text: 'Sistem jaminan keamanan menyeluruh' },
     { key: 'feature_3_title', en: 'Cost-effective', zh: '高性价比', id_text: 'Terjangkau' },
+    { key: 'feature_3_subtitle', en: '', zh: '', id_text: '' },
     { key: 'feature_3_desc', en: 'Transparent and reasonable fees', zh: '费用透明合理', id_text: 'Biaya transparan dan wajar' },
-    { key: 'feature_4_title', en: 'Caring', zh: '贴心服务', id_text: 'Penuh Perhatian' },
-    { key: 'feature_4_desc', en: 'Thoughtful service throughout your journey', zh: '全程贴心服务', id_text: 'Layanan penuh perhatian sepanjang perjalanan' },
 
     // Services section - up to 8 services
     { key: 'services_description', en: '<p>Our comprehensive medical tourism services are designed to make your journey to China seamless and stress-free.</p>', zh: '<p>我们 comprehensive 全面医疗服务设计让您的中国就医之旅轻松无忧。</p>', id_text: '<p>Layanan pariwisata medis komprehensif kami dirancang untuk membuat perjalanan Anda ke China mudah dan tanpa stres.</p>' },
@@ -48,6 +49,13 @@ async function main() {
     // Footer
     { key: 'footer_address', en: '123 Medical Center Road, Chaoyang District, Beijing, China', zh: '中国北京市朝阳区医疗中心路123号', id_text: 'Jalan Pusat Medis 123, Distrik Chaoyang, Beijing, Tiongkok' },
     { key: 'footer_phone', en: '400-888-8888', zh: '400-888-8888', id_text: '400-888-8888' },
+
+    // Top bar (global strip above main header)
+    { key: 'topbar_email', en: 'huenomedtour@163.com', zh: 'huenomedtour@163.com', id_text: 'huenomedtour@163.com' },
+    { key: 'topbar_phone', en: '+86 13244819680', zh: '+86 13244819680', id_text: '+86 13244819680' },
+    { key: 'topbar_social_tiktok_url', en: '', zh: '', id_text: '' },
+    { key: 'topbar_social_ins_url', en: '', zh: '', id_text: '' },
+    { key: 'topbar_social_facebook_url', en: '', zh: '', id_text: '' },
   ]
 
   // Only create content if it doesn't exist (to preserve user edits)
@@ -73,7 +81,6 @@ async function main() {
     { key: 'feature_icon_1', url: null },
     { key: 'feature_icon_2', url: null },
     { key: 'feature_icon_3', url: null },
-    { key: 'feature_icon_4', url: null },
     { key: 'service_image_1', url: null },
     { key: 'service_image_2', url: null },
     { key: 'service_image_3', url: null },
@@ -99,6 +106,12 @@ async function main() {
     { key: 'why_china_2_image', url: null },
     { key: 'why_china_3_image', url: null },
     { key: 'why_china_4_image', url: null },
+    // Top bar icons (5): email, phone, TikTok, Instagram, Facebook
+    { key: 'topbar_email_icon', url: null },
+    { key: 'topbar_phone_icon', url: null },
+    { key: 'topbar_tiktok', url: null },
+    { key: 'topbar_ins', url: null },
+    { key: 'topbar_facebook', url: null },
   ]
 
   for (const image of images) {

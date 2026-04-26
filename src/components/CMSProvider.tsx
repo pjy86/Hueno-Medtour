@@ -25,14 +25,26 @@ export function useCMS() {
   return useContext(CMSContext)
 }
 
+function isValidCMSPayload(json: unknown): json is CMSData {
+  if (!json || typeof json !== 'object') return false
+  const o = json as Record<string, unknown>
+  return Array.isArray(o.contents) && Array.isArray(o.images)
+}
+
 export function CMSProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<CMSData | null>(null)
 
   useEffect(() => {
     fetch('/api/cms')
-      .then(res => res.json())
-      .then(setData)
-      .catch(console.error)
+      .then(async res => {
+        const json: unknown = await res.json()
+        if (!res.ok || !isValidCMSPayload(json)) {
+          console.error('CMS fetch failed or invalid response', res.status, json)
+          return
+        }
+        setData(json)
+      })
+      .catch(err => console.error('CMS fetch error:', err))
   }, [])
 
   return (
@@ -43,8 +55,8 @@ export function CMSProvider({ children }: { children: ReactNode }) {
 }
 
 export function getContentByKey(data: CMSData | null, key: string, locale: string): string | null {
-  if (!data) return null
-  
+  if (!data || !Array.isArray(data.contents)) return null
+
   const content = data.contents.find(c => c.key === key)
   if (!content) return null
 
@@ -59,7 +71,7 @@ export function getContentByKey(data: CMSData | null, key: string, locale: strin
 }
 
 export function getImageByKey(data: CMSData | null, key: string): string | null {
-  if (!data) return null
+  if (!data || !Array.isArray(data.images)) return null
   const image = data.images.find(img => img.key === key)
   return image?.url || null
 }

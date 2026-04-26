@@ -59,7 +59,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="py-20 bg-gray-50" id="contact">
+    <section className="scroll-mt-28 py-20 bg-gray-50" id="contact">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-2xl mx-auto">
           {/* Section Title */}
