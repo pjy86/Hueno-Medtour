@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useParams, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useCMS, getImageByKey } from '@/components/CMSProvider'
 
@@ -23,10 +24,66 @@ const navKeyForId = (id: (typeof NAV_IDS)[number]): NavKey => {
 
 export default function Header() {
   const t = useTranslations('nav')
+  const params = useParams()
+  const router = useRouter()
+  const locale = (params.locale as string) || 'en'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const cmsData = useCMS()
 
   const logoUrl = getImageByKey(cmsData, 'logo_header')
+
+  const getCurrentPage = () => {
+    const pathname = window.location.pathname
+    if (pathname.includes('/checkup')) return 'checkup'
+    if (pathname.includes('/stem-cell')) return 'stemCell'
+    if (pathname.includes('/cancer-oncology')) return 'cancerOncology'
+    if (pathname.includes('/about-us')) return 'aboutUs'
+    return 'home'
+  }
+
+  const handleNavClick = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault()
+    const currentPage = getCurrentPage()
+
+    // Map targetId to page name
+    const targetPage = navKeyForId(targetId as (typeof NAV_IDS)[number])
+
+    // If clicking on current page's nav item, scroll to section or top
+    if (targetPage === currentPage) {
+      if (targetId === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const element = document.getElementById(targetId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }
+      setMobileMenuOpen(false)
+      return
+    }
+
+    // Navigate to different page
+    switch (targetId) {
+      case 'top':
+        router.push(`/${locale}`)
+        break
+      case 'checkup':
+        router.push(`/${locale}/checkup`)
+        break
+      case 'stem-cell':
+        router.push(`/${locale}/stem-cell`)
+        break
+      case 'cancer-oncology':
+        router.push(`/${locale}/cancer-oncology`)
+        break
+      case 'about-us':
+        router.push(`/${locale}/about-us`)
+        break
+      default:
+        router.push(`/${locale}`)
+    }
+    setMobileMenuOpen(false)
+  }
 
   const scrollToSection = (e: React.MouseEvent, targetId: string) => {
     e.preventDefault()
@@ -51,7 +108,16 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between gap-3 lg:gap-6 lg:h-20">
           <a
             href="#top"
-            onClick={e => scrollToSection(e, 'top')}
+            onClick={e => {
+              e.preventDefault()
+              const currentPage = getCurrentPage()
+              if (currentPage === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              } else {
+                router.push(`/${locale}`)
+              }
+              setMobileMenuOpen(false)
+            }}
             className="shrink-0 cursor-pointer"
           >
             {logoUrl && (
@@ -73,7 +139,7 @@ export default function Header() {
                   <a
                     key={id}
                     href={href}
-                    onClick={e => scrollToSection(e, id)}
+                    onClick={e => handleNavClick(e, id)}
                     className={linkClass}
                   >
                     {t(navKeyForId(id))}
@@ -111,7 +177,7 @@ export default function Header() {
                   <a
                     key={id}
                     href={href}
-                    onClick={e => scrollToSection(e, id)}
+                    onClick={e => handleNavClick(e, id)}
                     className={mobileLinkClass}
                   >
                     {t(navKeyForId(id))}

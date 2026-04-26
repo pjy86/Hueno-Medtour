@@ -19,7 +19,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden scroll-mt-28"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden scroll-mt-28 bg-white"
     >
       {/* Background Image - Only show if configured */}
       {bgImage && (
@@ -29,8 +29,8 @@ export default function Hero() {
             backgroundImage: `url(${bgImage})`
           }}
         >
-          {/* Overlay - Lighter blue */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a5c]/60 to-[#3d7ab5]/50" />
+          {/* Overlay - Subtle neutral overlay */}
+          <div className="absolute inset-0 bg-white/30" />
         </div>
       )}
 
@@ -40,7 +40,7 @@ export default function Hero() {
           {/* Main Title - Rich Text */}
           {title && (
             <h1
-              className="font-bold text-white mb-6 leading-tight text-left"
+              className="font-bold text-[#1a3a5c] mb-6 leading-tight text-left"
               style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
               dangerouslySetInnerHTML={{ __html: title }}
             />
@@ -49,7 +49,7 @@ export default function Hero() {
           {/* Subtitle - Rich Text */}
           {subtitle && (
             <div
-              className="text-xl md:text-2xl text-white/90 mb-8 text-left"
+              className="text-xl md:text-2xl text-gray-600 mb-8 text-left"
               dangerouslySetInnerHTML={{ __html: subtitle }}
             />
           )}
@@ -62,7 +62,7 @@ export default function Hero() {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }
             }}
-            className="inline-flex items-center gap-2 bg-[#a8ddf9] hover:bg-[#7ac4f0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
           >
             {ctaText}
             <ArrowRight size={20} />

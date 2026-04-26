@@ -56,6 +56,48 @@ async function main() {
     { key: 'topbar_social_tiktok_url', en: '', zh: '', id_text: '' },
     { key: 'topbar_social_ins_url', en: '', zh: '', id_text: '' },
     { key: 'topbar_social_facebook_url', en: '', zh: '', id_text: '' },
+
+    // Checkup page content
+    { key: 'checkup_hero_title', en: 'Premium Health Checkup in China', zh: '中国高端体检服务', id_text: 'Premium Health Checkup di Tiongkok' },
+    { key: 'checkup_hero_subtitle', en: 'Fast, Accurate, Comprehensive Medical Screening with World-Class Facilities & Transparent Pricing', zh: '快速、精准、全面的健康筛查——世界级医疗设施与透明定价', id_text: 'Pemeriksaan Medis Cepat, Akurat, Komprehensif dengan Fasilitas Kelas Dunia & Harga Transparan' },
+    { key: 'checkup_service_1_title', en: 'Half/Full Day Express', zh: '半日/一日快速体检', id_text: 'Cepat Half/Full Day' },
+    { key: 'checkup_service_1_desc', en: 'Complete health screening in just 2-6 hours, perfect for busy schedules', zh: '仅需2-6小时完成全面健康筛查，非常适合忙碌人士', id_text: 'Pemeriksaan kesehatan lengkap dalam 2-6 jam saja' },
+    { key: 'checkup_service_2_title', en: 'Bilingual Companion', zh: '全程双语陪同', id_text: 'Pendamping Biligual' },
+    { key: 'checkup_service_2_desc', en: 'Professional medical interpreter throughout your entire visit', zh: '专业医疗翻译师全程陪同就诊', id_text: 'Penerjemah medis profesional sepanjang kunjungan' },
+    { key: 'checkup_service_3_title', en: 'Advanced Equipment', zh: '高端影像设备', id_text: 'Peralatan Canggih' },
+    { key: 'checkup_service_3_desc', en: 'State-of-the-art imaging and diagnostic technology', zh: '国际领先的影像诊断设备', id_text: 'Teknologi pencitraan dan diagnostik terkini' },
+    { key: 'checkup_service_4_title', en: 'VIP Access', zh: 'VIP专属通道', id_text: 'Akses VIP' },
+    { key: 'checkup_service_4_desc', en: 'Dedicated priority channel with no waiting time', zh: '专属绿色通道，无需排队等待', id_text: 'Jalur prioritas tanpa waktu tunggu' },
+    { key: 'checkup_service_5_title', en: 'Bilingual Reports', zh: '双语报告+解读', id_text: 'Laporan Bilingual' },
+    { key: 'checkup_service_5_desc', en: 'Detailed medical reports with expert interpretation', zh: '详细的双语医学报告及专家解读', id_text: 'Laporan medis detail dengan interpretasi ahli' },
+    { key: 'checkup_service_6_title', en: 'Transparent Pricing', zh: '透明定价', id_text: 'Harga Transparan' },
+    { key: 'checkup_service_6_desc', en: 'All-inclusive pricing with no hidden fees', zh: '全包价格，无隐形消费', id_text: 'Harga all-inclusive tanpa biaya tersembunyi' },
+    { key: 'checkup_package_1_name', en: 'Package A | Express Checkup', zh: '套餐A | 快速基础体检', id_text: 'Paket A | Pemeriksaan Ekspres' },
+    { key: 'checkup_package_1_content', en: 'Price: $500\nFor: General population, quick health screening\nKey Items: Physical exam, Blood test, Liver & kidney function, Chest X-ray, Abdominal ultrasound, ECG\nHighlight: Fast, basic, cost-effective', zh: '价格: $500\n适合: 一般人群、快速健康筛查\n关键项目: 体检、血液检查、肝肾功能、胸部X光、腹部超声、心电图\n亮点: 快速、基础、高性价比', id_text: 'Harga: $500\nUntuk: Populasi umum, pemeriksaan kesehatan cepat\nItem Utama: Pemeriksaan fisik, Tes darah, Fungsi hati & ginjal, Rontgen dada, USG perut, EKG\nHighlight: Cepat, dasar, hemat biaya' },
+
+    // Package B
+    { key: 'checkup_package_2_name', en: 'Package B | Young Adult Basic Checkup', zh: '套餐B | 青年基础体检', id_text: 'Paket B | Pemeriksaan Dasar Dewasa Muda' },
+    { key: 'checkup_package_2_content', en: 'Price: $1,000\nFor: Adults 18+, annual routine check\nKey Items: All items in A + Lipid 4 items, Liver function 5 items, Tumor markers (AFP, CEA, EB-VCA-IgA)\nHighlight: Basic cancer screening + full organ assessment', zh: '价格: $1,000\n适合: 18岁以上成人、年度常规体检\n关键项目: A套餐所有项目 + 血脂4项、肝功能5项、肿瘤标志物(AFP、CEA、EB-VCA-IgA)\n亮点: 基础癌症筛查+全身器官评估', id_text: 'Harga: $1,000\nUntuk: Dewasa 18+, pemeriksaan rutin tahunan\nItem Utama: Semua item di A + Lipid 4 item, Fungsi hati 5 item, Penanda tumor (AFP, CEA, EB-VCA-IgA)\nHighlight: Skrining kanker dasar + penilaian organ penuh' },
+
+    // Package C
+    { key: 'checkup_package_3_name', en: 'Package C | Adults Standard Checkup', zh: '套餐C | 成人标准体检', id_text: 'Paket C | Pemeriksaan Standar Dewasa' },
+    { key: 'checkup_package_3_content', en: 'Price: $2,000 – $2,200\nFor: Adults who want full-body health management\nKey Items: All items in B + Chest CT, Thyroid function, Heart color ultrasound, Carotid ultrasound, Gender-specific tumor markers, Gynecological exam (female)\nHighlight: Deep screening for tumors, heart, cerebrovascular, thyroid', zh: '价格: $2,000 – $2,200\n适合: 需要全身健康管理的人群\n关键项目: B套餐所有项目 + 胸部CT、甲状腺功能、心脏彩超、颈动脉彩超、性别特异性肿瘤标志物、妇科检查(女性)\n亮点: 深度筛查肿瘤、心脏、脑血管、甲状腺', id_text: 'Harga: $2,000 – $2,200\nUntuk: Dewasa yang ingin manajemen kesehatan seluruh tubuh\nItem Utama: Semua item di B + CT dada, Fungsi tiroid, USG jantung warna, USG karotid, Penanda tumor spesifik gender, Pemeriksaan ginekologis (wanita)\nHighlight: Skrining mendalam untuk tumor, jantung, serebrovaskular, tiroid' },
+
+    // Package D
+    { key: 'checkup_package_4_name', en: 'Package D | Adults Comprehensive Checkup', zh: '套餐D | 成人全面体检', id_text: 'Paket D | Pemeriksaan Komprehensif Dewasa' },
+    { key: 'checkup_package_4_content', en: 'Price: $3,700 – $3,900\nFor: Adults who want comprehensive disease prevention\nKey Items: All items in C + Brain & cervical MRI, Painless gastrointestinal endoscopy, Coagulation function, Immune function, Hepatitis markers\nHighlight: Top-level screening, early detection of serious diseases', zh: '价格: $3,700 – $3,900\n适合: 需要全面疾病预防的人群\n关键项目: C套餐所有项目 + 脑部和颈椎MRI、无痛胃肠镜检查、凝血功能、免疫功能、乙肝标志物\n亮点: 顶级筛查、早期发现重大疾病', id_text: 'Harga: $3,700 – $3,900\nUntuk: Dewasa yang ingin pencegahan penyakit komprehensif\nItem Utama: Semua item di C + MRI otak & servikal, Endoskopi gastrointestinal tanpa rasa sakit, Fungsi koagulasi, Fungsi imun, Penanda hepatitis\nHighlight: Skrining tingkat atas, deteksi dini penyakit serius' },
+    { key: 'checkup_step_1_title', en: 'Online Consultation', zh: '在线咨询', id_text: 'Konsultasi Online' },
+    { key: 'checkup_step_1_desc', en: 'Discuss your health needs and choose the right package', zh: '了解您的健康需求，选择合适的套餐', id_text: 'Diskusikan kebutuhan kesehatan Anda' },
+    { key: 'checkup_step_2_title', en: 'Airport Pickup', zh: '入境接待', id_text: 'Penjemputan Bandara' },
+    { key: 'checkup_step_2_desc', en: 'VIP reception at the airport with comfortable transfer', zh: '专车接机，全程舒适接送', id_text: 'Resepsi VIP di bandara dengan transfer nyaman' },
+    { key: 'checkup_step_3_title', en: 'Checkup Day', zh: '体检当日', id_text: 'Hari Pemeriksaan' },
+    { key: 'checkup_step_3_desc', en: 'Comprehensive screening with personal attendant', zh: '专业医护人员全程陪同检查', id_text: 'Pemeriksaan menyeluruh dengan attendant pribadi' },
+    { key: 'checkup_step_4_title', en: 'Expert Interpretation', zh: '专家解读', id_text: 'Interpretasi Ahli' },
+    { key: 'checkup_step_4_desc', en: 'Board-certified doctor reviews your results', zh: '主任医师现场解读检查结果', id_text: 'Dokter bersertifikat meninjau hasil Anda' },
+    { key: 'checkup_step_5_title', en: 'Bilingual Report', zh: '双语报告', id_text: 'Laporan Bilingual' },
+    { key: 'checkup_step_5_desc', en: 'Receive detailed report in your preferred language', zh: '提供详细的双语体检报告', id_text: 'Terima laporan detail dalam bahasa pilihan Anda' },
+    { key: 'checkup_step_6_title', en: 'Long-term Follow-up', zh: '长期健康跟进', id_text: 'Tindak Lanjut Jangka Panjang' },
+    { key: 'checkup_step_6_desc', en: 'Ongoing health management and support', zh: '持续的健康管理与跟踪服务', id_text: 'Manajemen kesehatan berkelanjutan' },
   ]
 
   // Only create content if it doesn't exist (to preserve user edits)
@@ -112,6 +154,16 @@ async function main() {
     { key: 'topbar_tiktok', url: null },
     { key: 'topbar_ins', url: null },
     { key: 'topbar_facebook', url: null },
+    // Checkup page images
+    { key: 'checkup_hero_bg', url: null },
+    { key: 'checkup_package_1_image', url: null },
+    { key: 'checkup_package_2_image', url: null },
+    { key: 'checkup_package_3_image', url: null },
+    { key: 'checkup_package_4_image', url: null },
+    { key: 'checkup_env_1', url: null },
+    { key: 'checkup_env_2', url: null },
+    { key: 'checkup_env_3', url: null },
+    { key: 'checkup_env_4', url: null },
   ]
 
   for (const image of images) {
