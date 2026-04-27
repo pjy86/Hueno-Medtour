@@ -23,7 +23,7 @@ function FeatureImage({ src, title }: { src: string | null; title: string }) {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={safe}
-      alt={title}
+      alt={title ?? ''}
       className="w-full h-full object-cover"
       referrerPolicy="no-referrer"
       onError={() => setFailed(true)}

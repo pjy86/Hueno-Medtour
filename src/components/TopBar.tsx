@@ -30,7 +30,7 @@ function TopBarIcon({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={safe}
-      alt={alt}
+      alt={alt ?? ''}
       className={className ?? 'h-4 w-4 shrink-0 object-contain'}
       referrerPolicy="no-referrer"
     />

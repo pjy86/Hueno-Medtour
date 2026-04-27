@@ -75,7 +75,7 @@ export default function CheckupPackages() {
                       {image ? (
                         <img
                           src={image}
-                          alt={title}
+                          alt={title ?? ''}
                           className="w-full h-full object-cover"
                         />
                       ) : (

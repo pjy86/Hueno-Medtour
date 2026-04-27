@@ -57,7 +57,7 @@ export default function WhyChina() {
                   {item.image ? (
                     <img
                       src={item.image}
-                      alt={item.title}
+                      alt={item.title ?? ''}
                       className="w-full h-full object-cover"
                     />
                   ) : (
