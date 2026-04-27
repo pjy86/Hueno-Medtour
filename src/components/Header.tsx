@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useParams, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useCMS, getImageByKey } from '@/components/CMSProvider'
+import BookConsultationModal from './BookConsultationModal'
 
 const NAV_IDS = ['top', 'checkup', 'stem-cell', 'cancer-oncology', 'about-us'] as const
 
@@ -27,6 +28,7 @@ export default function Header() {
   const router = useRouter()
   const locale = (params.locale as string) || 'en'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const cmsData = useCMS()
 
   const logoUrl = getImageByKey(cmsData, 'logo_header')
@@ -84,19 +86,6 @@ export default function Header() {
     setMobileMenuOpen(false)
   }
 
-  const scrollToSection = (e: React.MouseEvent, targetId: string) => {
-    e.preventDefault()
-    if (targetId === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else {
-      const element = document.getElementById(targetId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    }
-    setMobileMenuOpen(false)
-  }
-
   const linkClass =
     'text-sm font-normal text-gray-900 hover:text-[#1861D7] transition-colors cursor-pointer'
   const mobileLinkClass = `${linkClass} px-4 py-2 rounded-lg hover:bg-gray-100`
@@ -147,13 +136,12 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-1">
-            <a
-              href="#contact"
-              onClick={e => scrollToSection(e, 'contact')}
-              className="hidden shrink-0 rounded-lg bg-[#1861D7] px-3 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-4 lg:inline-flex"
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="hidden shrink-0 rounded-lg bg-[#1861D7] px-3 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-4 lg:inline-flex cursor-pointer"
             >
               {t('freeConsultation')}
-            </a>
+            </button>
             <button
               type="button"
               className="p-2 text-gray-900 lg:hidden"
@@ -181,17 +169,22 @@ export default function Header() {
                   </a>
                 )
               })}
-              <a
-                href="#contact"
-                onClick={e => scrollToSection(e, 'contact')}
-                className="mt-2 rounded-lg bg-[#1861D7] px-4 py-3 text-center text-sm font-medium text-white"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-2 rounded-lg bg-[#1861D7] px-4 py-3 text-center text-sm font-medium text-white cursor-pointer"
               >
                 {t('freeConsultation')}
-              </a>
+              </button>
             </div>
           </div>
         )}
       </nav>
+
+      {/* Book Consultation Modal */}
+      <BookConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </header>
   )
 }
