@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useParams, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -121,11 +120,9 @@ export default function Header() {
             className="shrink-0 cursor-pointer"
           >
             {logoUrl && (
-              <Image
+              <img
                 src={logoUrl}
                 alt="Logo"
-                width={56}
-                height={56}
                 className="h-10 w-auto object-contain lg:h-12"
               />
             )}

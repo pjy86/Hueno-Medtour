@@ -4,12 +4,15 @@ import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { useCMS, getImageByKey, getContentByKey } from '@/components/CMSProvider'
+import BookConsultationModal from './BookConsultationModal'
+import { useState } from 'react'
 
 export default function CheckupPackages() {
   const t = useTranslations('checkup')
   const params = useParams()
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const packages = [
     { titleKey: 'package_1_name', contentKey: 'package_1_content', imageKey: 'checkup_package_1_image' },
@@ -41,82 +44,82 @@ export default function CheckupPackages() {
     return getImageByKey(cmsData, imageKey)
   }
 
-  const handleBookNow = () => {
-    const element = document.getElementById('contact')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }
-
   return (
-    <section id="packages" className="py-10 bg-white scroll-mt-28">
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7] mb-4">
-            {t('selectedPackages')}
-          </h2>
-          <div className="w-20 h-1 bg-[#4fa3e8] mx-auto rounded-full" />
-        </div>
+    <>
+      <section id="packages" className="py-10 bg-white scroll-mt-28">
+        <div className="container mx-auto px-4 lg:px-8">
+          {/* Section Title */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
+              {t('selectedPackages')}
+            </h2>
+          </div>
 
-        {/* Packages List */}
-        <div className="space-y-8 max-w-5xl mx-auto">
-          {packages.map((pkg, index) => {
-            const title = getContentByKey(cmsData, `checkup_${pkg.contentKey}`, locale) 
-              ? getContentByKey(cmsData, `checkup_${pkg.titleKey}`, locale) 
-              : defaults[index].title
-            const content = getContentByKey(cmsData, `checkup_${pkg.contentKey}`, locale) || defaults[index].content
-            const image = getPackageImage(pkg.imageKey)
+          {/* Packages List */}
+          <div className="space-y-8 max-w-5xl mx-auto">
+            {packages.map((pkg, index) => {
+              const title = getContentByKey(cmsData, `checkup_${pkg.contentKey}`, locale)
+                ? getContentByKey(cmsData, `checkup_${pkg.titleKey}`, locale)
+                : defaults[index].title
+              const content = getContentByKey(cmsData, `checkup_${pkg.contentKey}`, locale) || defaults[index].content
+              const image = getPackageImage(pkg.imageKey)
 
-            return (
-              <div
-                key={index}
-                className="grid grid-cols-1 lg:grid-cols-[300px_1fr] bg-white rounded-xl shadow-md overflow-hidden"
-              >
-                {/* Image Section */}
-                <div className="relative overflow-hidden h-[350px] lg:w-[300px] lg:h-[350px] lg:flex-shrink-0">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#e8f4fc] to-[#d0e8f7] flex items-center justify-center h-full">
-                    {image ? (
-                      <img
-                        src={image}
-                        alt={title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="text-center text-[#4fa3e8]">
-                        <div className="text-4xl mb-1">🏥</div>
-                        <p className="text-xs">{t('packageImage')}</p>
-                      </div>
-                    )}
+              return (
+                <div
+                  key={index}
+                  className="grid grid-cols-1 lg:grid-cols-[250px_1fr] bg-white rounded-xl shadow-md overflow-hidden"
+                >
+                  {/* Image Section */}
+                  <div className="relative overflow-hidden h-[350px] lg:w-[250px] lg:h-[260px] lg:flex-shrink-0">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#e8f4fc] to-[#d0e8f7] flex items-center justify-center h-full">
+                      {image ? (
+                        <img
+                          src={image}
+                          alt={title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="text-center text-[#4fa3e8]">
+                          <div className="text-4xl mb-1">🏥</div>
+                          <p className="text-xs">{t('packageImage')}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-4 lg:p-6 flex flex-col justify-between h-[260px] lg:h-[260px]">
+                    {/* Package Title */}
+                    <h3 className="text-lg font-bold text-[#1a3a5c]">
+                      {title}
+                    </h3>
+
+                    {/* Content */}
+                    <p className="text-sm text-gray-600 whitespace-pre-line leading-relaxed overflow-hidden">
+                      {content}
+                    </p>
+
+                    {/* Book Button */}
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer w-fit"
+                    >
+                      {t('bookNow')}
+                      <ArrowRight size={14} />
+                    </button>
                   </div>
                 </div>
-
-                {/* Content Section */}
-                <div className="p-4 lg:p-6 flex flex-col justify-between h-full min-h-[350px] lg:min-h-[350px]">
-                  {/* Package Title */}
-                  <h3 className="text-lg font-bold text-[#1a3a5c]">
-                    {title}
-                  </h3>
-
-                  {/* Content */}
-                  <p className="text-sm text-gray-600 whitespace-pre-line leading-relaxed overflow-hidden">
-                    {content}
-                  </p>
-
-                  {/* Book Button */}
-                  <button
-                    onClick={handleBookNow}
-                    className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer w-fit"
-                  >
-                    {t('bookNow')}
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Book Consultation Modal */}
+      <BookConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   )
 }

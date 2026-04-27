@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
 import { useCMS, getImageByKey } from '@/components/CMSProvider'
 
 export default function Testimonials() {
@@ -53,10 +52,9 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
             {t('title')}
           </h2>
-          <div className="w-20 h-1 bg-[#4fa3e8] mx-auto rounded-full" />
         </div>
 
         {/* Images Grid */}
@@ -64,14 +62,12 @@ export default function Testimonials() {
           {images.map((img, index) => (
             <div
               key={img.key}
-              className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow relative"
+              className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
             >
-              <Image
+              <img
                 src={img.url}
                 alt={`Success story ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                className="w-full h-full object-cover"
               />
             </div>
           ))}

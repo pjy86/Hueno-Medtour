@@ -66,10 +66,9 @@ export default function Features() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
             Why Choose Hueno Medtour China
           </h2>
-          <div className="w-20 h-1 bg-[#4fa3e8] mx-auto rounded-full" />
         </div>
 
         {/* Features Grid */}

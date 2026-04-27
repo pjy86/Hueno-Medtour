@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, MessageSquare, Mail, Phone, Globe, Calendar } from 'lucide-react'
+import { ArrowLeft, MessageSquare, Mail, Phone, Globe, Calendar, User, Heart, MessageCircle } from 'lucide-react'
 
 interface Contact {
   id: number
@@ -12,6 +12,10 @@ interface Contact {
   phone: string | null
   country: string | null
   message: string | null
+  age: string | null
+  gender: string | null
+  whatsapp: string | null
+  medicalNeeds: string | null
   createdAt: string
 }
 
@@ -88,6 +92,16 @@ export default function ContactsPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="font-semibold text-gray-900">{contact.name || 'Anonymous'}</h3>
+                        {contact.gender && (
+                          <span className="flex items-center gap-1 text-xs text-gray-500">
+                            <User size={12} />{contact.gender}
+                          </span>
+                        )}
+                        {contact.age && (
+                          <span className="flex items-center gap-1 text-xs text-gray-500">
+                            <Calendar size={12} />{contact.age} yrs
+                          </span>
+                        )}
                         {contact.country && (
                           <span className="flex items-center gap-1 text-xs text-gray-500">
                             <Globe size={12} />{contact.country}
@@ -98,18 +112,23 @@ export default function ContactsPage() {
                         {contact.email && (
                           <span className="flex items-center gap-1"><Mail size={14} />{contact.email}</span>
                         )}
+                        {contact.whatsapp && (
+                          <span className="flex items-center gap-1"><MessageCircle size={14} />{contact.whatsapp}</span>
+                        )}
                         {contact.phone && (
                           <span className="flex items-center gap-1"><Phone size={14} />{contact.phone}</span>
                         )}
-                        <span className="flex items-center gap-1 text-gray-400">
-                          <Calendar size={14} />{formatDate(contact.createdAt)}
-                        </span>
                       </div>
-                      {contact.message && (
-                        <p className="mt-3 text-sm text-gray-700 line-clamp-2">{contact.message}</p>
+                      {contact.medicalNeeds && (
+                        <p className="mt-3 text-sm text-gray-700 line-clamp-2">
+                          <span className="font-medium">Medical Needs:</span> {contact.medicalNeeds}
+                        </p>
                       )}
                     </div>
-                    <MessageSquare className="text-gray-300" size={20} />
+                    <div className="text-right">
+                      <MessageSquare className="text-gray-300" size={20} />
+                      <p className="text-xs text-gray-400 mt-1">{formatDate(contact.createdAt)}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -121,17 +140,49 @@ export default function ContactsPage() {
       {selectedContact && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-auto">
-            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+            <div className="p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white rounded-t-2xl">
               <h3 className="text-lg font-semibold text-gray-900">Enquiry Details</h3>
               <button onClick={() => setSelectedContact(null)} className="p-2 hover:bg-gray-100 rounded-lg">×</button>
             </div>
             <div className="p-6 space-y-4">
-              <div><label className="text-xs font-medium text-gray-500">Name</label><p className="text-gray-900">{selectedContact.name || 'Not provided'}</p></div>
-              <div><label className="text-xs font-medium text-gray-500">Email</label><p className="text-gray-900">{selectedContact.email || 'Not provided'}</p></div>
-              <div><label className="text-xs font-medium text-gray-500">Phone</label><p className="text-gray-900">{selectedContact.phone || 'Not provided'}</p></div>
-              <div><label className="text-xs font-medium text-gray-500">Country</label><p className="text-gray-900">{selectedContact.country || 'Not provided'}</p></div>
-              <div><label className="text-xs font-medium text-gray-500">Message</label><p className="text-gray-900 whitespace-pre-wrap">{selectedContact.message || 'No message'}</p></div>
-              <div><label className="text-xs font-medium text-gray-500">Submitted At</label><p className="text-gray-900">{formatDate(selectedContact.createdAt)}</p></div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><User size={12} /> Name</label>
+                  <p className="text-gray-900">{selectedContact.name || 'Not provided'}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><Calendar size={12} /> Age</label>
+                  <p className="text-gray-900">{selectedContact.age || 'Not provided'}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><Heart size={12} /> Gender</label>
+                  <p className="text-gray-900">{selectedContact.gender || 'Not provided'}</p>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><Globe size={12} /> Country</label>
+                  <p className="text-gray-900">{selectedContact.country || 'Not provided'}</p>
+                </div>
+              </div>
+              <div>
+                <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><Mail size={12} /> Email</label>
+                <p className="text-gray-900">{selectedContact.email || 'Not provided'}</p>
+              </div>
+              <div>
+                <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><MessageCircle size={12} /> WhatsApp</label>
+                <p className="text-gray-900">{selectedContact.whatsapp || 'Not provided'}</p>
+              </div>
+              <div>
+                <label className="text-xs font-medium text-gray-500 flex items-center gap-1"><Phone size={12} /> Phone</label>
+                <p className="text-gray-900">{selectedContact.phone || 'Not provided'}</p>
+              </div>
+              <div>
+                <label className="text-xs font-medium text-gray-500">What medical needs you have?</label>
+                <p className="text-gray-900 whitespace-pre-wrap">{selectedContact.medicalNeeds || 'Not provided'}</p>
+              </div>
+              <div className="pt-4 border-t border-gray-200">
+                <label className="text-xs font-medium text-gray-500">Submitted At</label>
+                <p className="text-gray-900">{formatDate(selectedContact.createdAt)}</p>
+              </div>
             </div>
           </div>
         </div>

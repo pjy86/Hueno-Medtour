@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
-import Image from 'next/image'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
 
 export default function WhyChina() {
@@ -40,10 +39,9 @@ export default function WhyChina() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
             {sectionTitle || 'Why Choose China'}
           </h2>
-          <div className="w-20 h-1 bg-[#4fa3e8] mx-auto rounded-full" />
         </div>
 
         {/* Items Grid */}
@@ -57,12 +55,10 @@ export default function WhyChina() {
                 {/* 16:9 Image */}
                 <div className="w-full aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4 relative">
                   {item.image ? (
-                    <Image
+                    <img
                       src={item.image}
                       alt={item.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gray-200">

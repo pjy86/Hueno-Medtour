@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
-import Image from 'next/image'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
 
 export default function Services() {
@@ -41,10 +40,9 @@ export default function Services() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
             {t('title')}
           </h2>
-          <div className="w-20 h-1 bg-[#4fa3e8] mx-auto rounded-full" />
         </div>
 
         {/* Services Description - Rich Text */}
@@ -71,14 +69,12 @@ export default function Services() {
                 className="flex flex-col items-center text-center p-4"
               >
                 {/* Square Image - Responsive */}
-                <div className="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 overflow-hidden mb-4 flex-shrink-0 relative">
+                <div className="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 overflow-hidden mb-4 flex-shrink-0">
                   {service.image ? (
-                    <Image
+                    <img
                       src={service.image}
                       alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">

@@ -4,7 +4,6 @@ import CheckupServices from '@/components/CheckupServices'
 import CheckupPackages from '@/components/CheckupPackages'
 import CheckupProcess from '@/components/CheckupProcess'
 import CheckupEnvironment from '@/components/CheckupEnvironment'
-import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
 export default function CheckupPage() {
@@ -17,7 +16,6 @@ export default function CheckupPage() {
         <CheckupPackages />
         <CheckupProcess />
         <CheckupEnvironment />
-        <ContactForm />
       </main>
       <Footer />
     </>

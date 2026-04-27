@@ -64,10 +64,9 @@ export default function ContactForm() {
         <div className="max-w-2xl mx-auto">
           {/* Section Title */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
               {t('title')}
             </h2>
-            <div className="w-20 h-1 bg-[#4fa3e8] mx-auto rounded-full" />
           </div>
 
           {/* Form */}

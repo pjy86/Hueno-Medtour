@@ -4,9 +4,9 @@ import { prisma } from '@/lib/db'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, country, message } = body
+    const { name, email, phone, country, message, age, gender, whatsapp, medicalNeeds } = body
 
-    if (!name || !email || !message) {
+    if (!name || !email) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -19,7 +19,11 @@ export async function POST(request: NextRequest) {
         email,
         phone,
         country,
-        message
+        message,
+        age,
+        gender,
+        whatsapp,
+        medicalNeeds
       }
     })
 
