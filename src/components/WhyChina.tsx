@@ -68,7 +68,7 @@ export default function WhyChina() {
                 </div>
 
                 {/* Title - Centered */}
-                <h3 className="text-lg font-bold mb-2 text-center" style={{ color: '#4fa3eb' }}>
+                <h3 className="text-lg font-bold mb-2 text-center" style={{ color: '#1861D7' }}>
                   {item.title}
                 </h3>
 
