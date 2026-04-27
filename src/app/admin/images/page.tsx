@@ -23,8 +23,8 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
   home: (key) => {
     // Homepage keys
     const homePrefixes = [
-      'hero_bg', 'logo_header', 'why_china_', 'feature_icon_',
-      'service_image_', 'testimonial_', 'footer_logo'
+      'hero_bg', 'logo_header', 'logo_footer', 'why_china_', 'feature_icon_',
+      'service_image_', 'testimonial_'
     ]
     const isHomeKey = homePrefixes.some(prefix => key.startsWith(prefix))
     // Exclude checkup-specific keys
