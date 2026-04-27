@@ -33,6 +33,7 @@
   },
   "services": {
     "title": "Our Services",
+    "bookNow": "Book Now",
     "service1": {
       "title": "Medical Consultation",
       "desc": "Expert diagnosis and treatment planning"

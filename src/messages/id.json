@@ -33,6 +33,7 @@
   },
   "services": {
     "title": "Layanan Kami",
+    "bookNow": "Pesan Sekarang",
     "service1": {
       "title": "Konsultasi Medis",
       "desc": "Diagnosis ahli dan perencanaan perawatan"

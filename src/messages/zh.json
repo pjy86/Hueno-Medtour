@@ -33,6 +33,7 @@
   },
   "services": {
     "title": "我们的服务",
+    "bookNow": "立即预约",
     "service1": {
       "title": "医疗咨询",
       "desc": "专家诊断与治疗方案"

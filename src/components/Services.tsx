@@ -2,13 +2,17 @@
 
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
+import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
+import BookConsultationModal from './BookConsultationModal'
 
 export default function Services() {
   const t = useTranslations('services')
   const params = useParams()
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   // Support up to 8 services
   const maxServices = 8
@@ -40,7 +44,7 @@ export default function Services() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
             {t('title')}
           </h2>
         </div>
@@ -91,7 +95,24 @@ export default function Services() {
             ))}
           </div>
         )}
+
+        {/* Book Now Button */}
+        <div className="text-center mt-12">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+          >
+            {t('bookNow')}
+            <ArrowRight size={20} />
+          </button>
+        </div>
       </div>
+
+      {/* Book Consultation Modal */}
+      <BookConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   )
 }

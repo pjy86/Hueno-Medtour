@@ -4,7 +4,6 @@ import WhyChina from '@/components/WhyChina'
 import Features from '@/components/Features'
 import Services from '@/components/Services'
 import Testimonials from '@/components/Testimonials'
-import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
 export default function HomePage() {
@@ -17,7 +16,6 @@ export default function HomePage() {
         <Features />
         <Services />
         <Testimonials />
-        <ContactForm />
       </main>
       <Footer />
     </>
