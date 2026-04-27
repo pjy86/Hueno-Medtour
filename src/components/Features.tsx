@@ -84,7 +84,7 @@ export default function Features() {
               </div>
 
               {/* Title */}
-              <h3 className="text-6xl font-bold mb-2 text-center" style={{ color: '#4fa3eb' }}>
+              <h3 className="text-6xl font-bold mb-2 text-center" style={{ color: '#1861D7' }}>
                 {title}
               </h3>
 
