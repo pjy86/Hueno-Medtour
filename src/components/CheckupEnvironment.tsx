@@ -61,7 +61,7 @@ export default function CheckupEnvironment() {
           <div className="text-center mt-12">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-[#4fa3e8] hover:bg-[#3d8fd4] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
             >
               {t('bookNow')}
               <ArrowRight size={20} />

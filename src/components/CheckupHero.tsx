@@ -52,25 +52,11 @@ export default function CheckupHero() {
               {/* CTA Button */}
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center gap-2 bg-[#4fa3e8] hover:bg-[#3d8fd4] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
               >
                 {t('bookNow')}
                 <ArrowRight size={20} />
               </button>
-
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap gap-4 pt-4">
-                {[
-                  t('trust1'),
-                  t('trust2'),
-                  t('trust3')
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-gray-600 text-sm">
-                    <CheckCircle2 size={16} className="text-[#4fa3e8]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
