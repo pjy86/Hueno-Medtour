@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Part 1: Logo */}
           <div>
             {logoUrl && (
-              <img src={logoUrl} alt="Logo" className="h-14 w-auto object-contain" />
+              <img src={logoUrl} alt="Logo" className="h-[60px] w-auto object-contain" />
             )}
           </div>
 
