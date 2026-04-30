@@ -15,25 +15,24 @@ export async function PUT(request: NextRequest) {
         )
       }
 
-      const results = await prisma.$transaction(
-        items.map((item: { type: string; key: string; en?: string | null; zh?: string | null; id_text?: string | null; url?: string | null }) => {
-          if (item.type === 'content') {
-            return prisma.content.upsert({
-              where: { key: item.key },
-              update: { en: item.en, zh: item.zh, id_text: item.id_text },
-              create: { key: item.key, en: item.en, zh: item.zh, id_text: item.id_text }
-            })
-          }
-          if (item.type === 'image') {
-            return prisma.image.upsert({
-              where: { key: item.key },
-              update: { url: item.url },
-              create: { key: item.key, url: item.url }
-            })
-          }
-          return null
-        }).filter(Boolean)
-      )
+      const operations = items.flatMap((item: { type: string; key: string; en?: string | null; zh?: string | null; id_text?: string | null; url?: string | null }) => {
+        if (item.type === 'content') {
+          return [prisma.content.upsert({
+            where: { key: item.key },
+            update: { en: item.en, zh: item.zh, id_text: item.id_text },
+            create: { key: item.key, en: item.en, zh: item.zh, id_text: item.id_text }
+          })]
+        }
+        if (item.type === 'image') {
+          return [prisma.image.upsert({
+            where: { key: item.key },
+            update: { url: item.url },
+            create: { key: item.key, url: item.url }
+          })]
+        }
+        return []
+      })
+      const results = await prisma.$transaction(operations)
 
       return NextResponse.json({ saved: results.length })
     }
