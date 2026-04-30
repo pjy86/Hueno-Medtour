@@ -1,0 +1,60 @@
+---
+description: TypeScript type safety rules - prevent common type errors
+globs: **/*.ts
+alwaysApply: false
+---
+
+# TypeScript Type Safety
+
+## Array Transformations with Prisma $transaction
+
+When building arrays for `prisma.$transaction()`, avoid `.map().filter(Boolean)` — TypeScript cannot narrow the type through `.filter(Boolean)`, resulting in `(PrismaPromise | null)[]` which fails `$transaction`'s type signature.
+
+```typescript
+// ❌ BAD - filter(Boolean) does NOT narrow the type
+const ops = items.map(item => {
+  if (item.type === 'content') return prisma.content.upsert({...})
+  if (item.type === 'image') return prisma.image.upsert({...})
+  return null
+}).filter(Boolean)
+await prisma.$transaction(ops) // TS error: null not assignable to PrismaPromise
+
+// ✅ GOOD - flatMap returns empty array for non-matching items, type stays clean
+const ops = items.flatMap(item => {
+  if (item.type === 'content') return [prisma.content.upsert({...})]
+  if (item.type === 'image') return [prisma.image.upsert({...})]
+  return []
+})
+await prisma.$transaction(ops)
+```
+
+## General Rule: Prefer flatMap over map+filter for Type Narrowing
+
+When mapping with conditional returns where some branches should be excluded, use `flatMap` with empty array returns instead of `map` + `filter(Boolean)`.
+
+```typescript
+// ❌ BAD
+const results = items.map(i => condition(i) ? transform(i) : null).filter(Boolean)
+
+// ✅ GOOD
+const results = items.flatMap(i => condition(i) ? [transform(i)] : [])
+```
+
+## Avoid Non-null Assertions Without Guards
+
+Do not use `!` (non-null assertion) to silence type errors. Use proper type guards or early returns.
+
+```typescript
+// ❌ BAD
+const user = users.find(u => u.id === id)!
+user.name // crashes at runtime if not found
+
+// ✅ GOOD
+const user = users.find(u => u.id === id)
+if (!user) throw new Error('User not found')
+user.name // safe
+```
+
+## Explicit Return Types for Conditional Branches
+
+When a function has conditional branches returning different types, ensure all branches are covered and TypeScript can infer a consistent return type. Add explicit return type annotations when inference may be ambiguous.

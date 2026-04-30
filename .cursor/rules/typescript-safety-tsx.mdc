@@ -1,0 +1,32 @@
+---
+description: TypeScript type safety rules - prevent common type errors
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# TypeScript Type Safety (TSX)
+
+## Array Transformations with Conditional Filtering
+
+When building arrays where some items should be conditionally excluded, use `flatMap` with empty array returns instead of `map` + `filter(Boolean)`. TypeScript cannot narrow types through `.filter(Boolean)`.
+
+```typescript
+// ❌ BAD
+const items = list.map(x => condition(x) ? transform(x) : null).filter(Boolean)
+
+// ✅ GOOD
+const items = list.flatMap(x => condition(x) ? [transform(x)] : [])
+```
+
+## Avoid Non-null Assertions
+
+Do not use `!` to silence type errors. Use proper guards or early returns.
+
+```typescript
+// ❌ BAD
+const el = arr.find(x => x.id === id)!
+
+// ✅ GOOD
+const el = arr.find(x => x.id === id)
+if (!el) return null
+```
