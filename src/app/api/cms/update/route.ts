@@ -4,8 +4,41 @@ import { prisma } from '@/lib/db'
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json()
-    const { type, key, en, zh, id_text, url } = body
+    const { type, key, en, zh, id_text, url, items } = body
 
+    // Batch save
+    if (type === 'batch') {
+      if (!Array.isArray(items) || items.length === 0) {
+        return NextResponse.json(
+          { error: 'Items array is required for batch update' },
+          { status: 400 }
+        )
+      }
+
+      const results = await prisma.$transaction(
+        items.map((item: { type: string; key: string; en?: string | null; zh?: string | null; id_text?: string | null; url?: string | null }) => {
+          if (item.type === 'content') {
+            return prisma.content.upsert({
+              where: { key: item.key },
+              update: { en: item.en, zh: item.zh, id_text: item.id_text },
+              create: { key: item.key, en: item.en, zh: item.zh, id_text: item.id_text }
+            })
+          }
+          if (item.type === 'image') {
+            return prisma.image.upsert({
+              where: { key: item.key },
+              update: { url: item.url },
+              create: { key: item.key, url: item.url }
+            })
+          }
+          return null
+        }).filter(Boolean)
+      )
+
+      return NextResponse.json({ saved: results.length })
+    }
+
+    // Single save
     if (!type || !key) {
       return NextResponse.json(
         { error: 'Missing required fields' },

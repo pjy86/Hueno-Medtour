@@ -115,5 +115,14 @@
     "freeConsultation": "免费咨询",
     "defaultTitle": "中国干细胞治疗",
     "defaultSubtitle": "先进再生医学，世界级设施与专业护理"
+  },
+  "cancer": {
+    "freeConsultation": "免费咨询",
+    "defaultTitle": "中国肿瘤与癌症治疗",
+    "defaultSubtitle": "世界级癌症护理，先进技术与贴心关怀"
+  },
+  "about": {
+    "defaultTitle": "关于我们",
+    "defaultDescription": "Hueno Medtour China 是一站式、无缝连接的国际医疗旅游服务平台，致力于以中国优质医疗资源为核心，提供定制化、世界级、高性价比的医疗旅游解决方案。"
   }
 }

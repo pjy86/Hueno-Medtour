@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Part 1: Logo */}
           {logoUrl && (
-            <img src={logoUrl} alt="Logo" className="w-[130px] h-auto object-contain" />
+            <img src={logoUrl} alt="Logo" className="w-[110px] h-auto object-contain" />
           )}
 
           {/* Part 2: About Us */}

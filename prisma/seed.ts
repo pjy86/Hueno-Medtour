@@ -151,6 +151,53 @@ async function main() {
     // Stem Cell Boao Zone (内容区4)
     { key: 'stemcell_boao_title', en: 'About Boao Lecheng International Medical Tourism Pilot Zone', zh: '关于博鳌乐城国际医疗旅游先行区', id_text: 'Tentang Zona Percontohan Pariwisata Medis Internasional Boao Lecheng' },
     { key: 'stemcell_boao_desc', en: '<p>The Boao Lecheng International Medical Tourism Pilot Zone is China\'s only special medical zone approved by the State Council, offering unprecedented access to cutting-edge medical technologies and stem cell therapies. Located in Hainan Province, this pilot zone allows the use of internationally approved drugs, medical devices, and stem cell therapies that are not yet available elsewhere in China, providing patients with early access to the world\'s most advanced medical treatments.</p>', zh: '<p>博鳌乐城国际医疗旅游先行区是经国务院批准的中国唯一特殊医疗区域，提供前所未有的尖端医疗技术和干细胞治疗机会。位于海南省，该先行区允许使用尚未在中国其他地区上市的国际已批准药物、医疗器械和干细胞疗法，让患者提前获得世界最先进的医疗治疗。</p>', id_text: '<p>Zona Percontohan Pariwisata Medis Internasional Boao Lecheng adalah satu-satunya zona medis khusus di China yang disetujui oleh Dewan Negara, menawarkan akses tanpa preseden ke teknologi medis canggih dan terapi sel induk. Terletak di Provinsi Hainan, zona percontohan ini memungkinkan penggunaan obat, perangkat medis, dan terapi sel induk yang disetujui secara internasional yang belum tersedia di tempat lain di China, memberikan pasien akses awal ke perawatan medis paling canggih di dunia.</p>' },
+
+    // Cancer & Oncology page content
+    { key: 'cancer_hero_title', en: 'Cancer & Oncology Treatment in China', zh: '中国肿瘤与癌症治疗', id_text: 'Perawatan Kanker & Onkologi di Tiongkok' },
+    { key: 'cancer_hero_subtitle', en: 'World-class cancer care with advanced technology & compassionate support', zh: '世界级癌症护理，先进技术与贴心关怀', id_text: 'Perawatan kanker kelas dunia dengan teknologi canggih & dukungan penuh perhatian' },
+
+    // Cancer Advantages
+    { key: 'cancer_advantages_title', en: 'Oncology Treatment Advantages', zh: '肿瘤治疗优势', id_text: 'Keunggulan Perawatan Onkologi' },
+    { key: 'cancer_advantage_1_title', en: 'Multidisciplinary Teams', zh: '多学科团队', id_text: 'Tim Multidisiplin' },
+    { key: 'cancer_advantage_2_title', en: 'Cutting-Edge Technology', zh: '尖端技术', id_text: 'Teknologi Canggih' },
+    { key: 'cancer_advantage_3_title', en: 'Personalized Treatment', zh: '个性化治疗', id_text: 'Perawatan Personal' },
+    { key: 'cancer_advantage_4_title', en: 'Affordable Excellence', zh: '优质平价', id_text: 'Keunggulan Terjangkau' },
+    { key: 'cancer_advantage_5_title', en: 'Clinical Trials Access', zh: '临床试验机会', id_text: 'Akses Uji Klinis' },
+    { key: 'cancer_advantage_6_title', en: 'Holistic Support', zh: '全面支持', id_text: 'Dukungan Holistik' },
+
+    // Cancer Technologies
+    { key: 'cancer_technologies_title', en: 'Advanced Cancer Treatment Technologies', zh: '先进癌症治疗技术', id_text: 'Teknologi Perawatan Kanker Canggih' },
+    { key: 'cancer_technology_1_title', en: 'Proton Therapy', zh: '质子治疗', id_text: 'Terapi Proton' },
+    { key: 'cancer_technology_1_desc', en: 'Precision radiation therapy that targets tumors while sparing healthy tissue', zh: '精准放射治疗，靶向肿瘤同时保护健康组织', id_text: 'Terapi radiasi presisi yang menargetkan tumor sambil melindungi jaringan sehat' },
+    { key: 'cancer_technology_2_title', en: 'Immunotherapy', zh: '免疫治疗', id_text: 'Imunoterapi' },
+    { key: 'cancer_technology_2_desc', en: 'Harness the body immune system to fight cancer with checkpoint inhibitors and CAR-T cell therapy', zh: '利用身体免疫系统对抗癌症，包括检查点抑制剂和CAR-T细胞疗法', id_text: 'Memanfaatkan sistem kekebalan tubuh untuk melawan kanker dengan inhibitor checkpoint dan terapi sel CAR-T' },
+    { key: 'cancer_technology_3_title', en: 'Targeted Therapy', zh: '靶向治疗', id_text: 'Terapi Target' },
+    { key: 'cancer_technology_3_desc', en: 'Drugs designed to target specific cancer cells with minimal side effects', zh: '针对特定癌细胞设计的药物，副作用最小', id_text: 'Obat yang dirancang untuk menargetkan sel kanker tertentu dengan efek samping minimal' },
+    { key: 'cancer_technology_4_title', en: 'Minimally Invasive Surgery', zh: '微创手术', id_text: 'Operasi Minimal Invasif' },
+    { key: 'cancer_technology_4_desc', en: 'Robotic and laparoscopic surgical techniques for faster recovery', zh: '机器人和腹腔镜手术技术，加速恢复', id_text: 'Teknik bedah robotik dan laparoskopi untuk pemulihan lebih cepat' },
+    { key: 'cancer_technology_5_title', en: 'Nuclear Medicine', zh: '核医学', id_text: 'Kedokteran Nuklir' },
+    { key: 'cancer_technology_5_desc', en: 'Advanced diagnostic imaging and targeted radionuclide therapy', zh: '先进诊断影像和靶向放射性核素治疗', id_text: 'Pencitraan diagnostik canggih dan terapi radionuklida target' },
+    { key: 'cancer_technology_6_title', en: 'Precision Oncology', zh: '精准肿瘤学', id_text: 'Onkologi Presisi' },
+    { key: 'cancer_technology_6_desc', en: 'Genomic profiling to match patients with the most effective treatments', zh: '基因组分析，为患者匹配最有效的治疗方案', id_text: 'Profil genomik untuk mencocokkan pasien dengan perawatan paling efektif' },
+
+    // Cancer Treatment Process
+    { key: 'cancer_process_title', en: 'Treatment Process', zh: '治疗流程', id_text: 'Proses Perawatan' },
+    { key: 'cancer_step_1_title', en: 'Online Consultation', zh: '在线咨询', id_text: 'Konsultasi Online' },
+    { key: 'cancer_step_1_desc', en: 'Share your medical records for preliminary assessment by specialist teams', zh: '分享您的病历，由专家团队进行初步评估', id_text: 'Bagikan catatan medis Anda untuk penilaian awal oleh tim spesialis' },
+    { key: 'cancer_step_2_title', en: 'Treatment Planning', zh: '治疗方案制定', id_text: 'Perencanaan Perawatan' },
+    { key: 'cancer_step_2_desc', en: 'Multidisciplinary team designs a personalized treatment plan', zh: '多学科团队制定个性化治疗方案', id_text: 'Tim multidisiplin merancang rencana perawatan personal' },
+    { key: 'cancer_step_3_title', en: 'Travel Arrangement', zh: '出行安排', id_text: 'Pengaturan Perjalanan' },
+    { key: 'cancer_step_3_desc', en: 'We handle visa, flights, accommodation and airport pickup', zh: '我们办理签证、航班、住宿和接机', id_text: 'Kami menangani visa, penerbangan, akomodasi, dan penjemputan bandara' },
+    { key: 'cancer_step_4_title', en: 'Treatment in China', zh: '在华治疗', id_text: 'Perawatan di Tiongkok' },
+    { key: 'cancer_step_4_desc', en: 'Receive world-class treatment with bilingual medical support', zh: '在双语医疗支持下接受世界级治疗', id_text: 'Terima perawatan kelas dunia dengan dukungan medis bilingual' },
+    { key: 'cancer_step_5_title', en: 'Post-Treatment Care', zh: '治疗后护理', id_text: 'Perawatan Pasca-Perawatan' },
+    { key: 'cancer_step_5_desc', en: 'Recovery support and follow-up consultations', zh: '恢复支持和后续咨询', id_text: 'Dukungan pemulihan dan konsultasi tindak lanjut' },
+    { key: 'cancer_step_6_title', en: 'Long-term Follow-up', zh: '长期随访', id_text: 'Tindak Lanjut Jangka Panjang' },
+    { key: 'cancer_step_6_desc', en: 'Ongoing monitoring and coordination with your home doctors', zh: '持续监测和与国内医生协调', id_text: 'Pemantauan berkelanjutan dan koordinasi dengan dokter di negara Anda' },
+
+    // About Us page content
+    { key: 'about_hero_title', en: 'About Us', zh: '关于我们', id_text: 'Tentang Kami' },
+    { key: 'about_hero_description', en: 'Hueno Medtour China is a one-stop, seamlessly connected international medical tourism service platform dedicated to delivering customized, world-class and affordable medical tourism solutions centered on China\'s premium healthcare resources.', zh: 'Hueno Medtour China 是一站式、无缝连接的国际医疗旅游服务平台，致力于以中国优质医疗资源为核心，提供定制化、世界级、高性价比的医疗旅游解决方案。', id_text: 'Hueno Medtour China adalah platform layanan pariwisata medis internasional satu atap yang terhubung secara mulus, didedikasikan untuk memberikan solusi pariwisata medis yang disesuaikan, kelas dunia, dan terjangkau yang berpusat pada sumber daya perawatan kesehatan premium China.' },
   ]
 
   // Only create content if it doesn't exist (to preserve user edits)
@@ -244,6 +291,26 @@ async function main() {
     { key: 'stemcell_why_china_5_image', url: null },
     { key: 'stemcell_why_china_6_image', url: null },
     { key: 'stemcell_boao_image', url: null },
+    // Cancer & Oncology page images
+    { key: 'cancer_hero_bg', url: null },
+    { key: 'cancer_advantage_1_icon', url: null },
+    { key: 'cancer_advantage_2_icon', url: null },
+    { key: 'cancer_advantage_3_icon', url: null },
+    { key: 'cancer_advantage_4_icon', url: null },
+    { key: 'cancer_advantage_5_icon', url: null },
+    { key: 'cancer_advantage_6_icon', url: null },
+    { key: 'cancer_technology_1_image', url: null },
+    { key: 'cancer_technology_2_image', url: null },
+    { key: 'cancer_technology_3_image', url: null },
+    { key: 'cancer_technology_4_image', url: null },
+    { key: 'cancer_technology_5_image', url: null },
+    { key: 'cancer_technology_6_image', url: null },
+    { key: 'cancer_step_1_icon', url: null },
+    { key: 'cancer_step_2_icon', url: null },
+    { key: 'cancer_step_3_icon', url: null },
+    { key: 'cancer_step_4_icon', url: null },
+    { key: 'cancer_step_5_icon', url: null },
+    { key: 'cancer_step_6_icon', url: null },
   ]
 
   for (const image of images) {

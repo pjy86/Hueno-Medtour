@@ -62,7 +62,7 @@ export default function Testimonials() {
           {images.map((img, index) => (
             <div
               key={img.key}
-              className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+              className="aspect-square rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-shadow duration-300"
             >
               <img
                 src={img.url}

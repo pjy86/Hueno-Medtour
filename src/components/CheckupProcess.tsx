@@ -54,7 +54,7 @@ export default function CheckupProcess() {
   ]
 
   return (
-    <section id="process" className="py-20 bg-gray-50 scroll-mt-28">
+    <section id="process" className="py-20 bg-white scroll-mt-28">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-12">
@@ -72,7 +72,7 @@ export default function CheckupProcess() {
             return (
               <div
                 key={index}
-                className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-shadow duration-300"
               >
                 {/* Icon */}
                 <div className="mb-4 overflow-hidden">

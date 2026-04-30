@@ -115,5 +115,14 @@
     "freeConsultation": "Konsultasi gratis",
     "defaultTitle": "Terapi Sel Induk di Tiongkok",
     "defaultSubtitle": "Kedokteran regeneratif canggih dengan fasilitas kelas dunia & perawatan ahli"
+  },
+  "cancer": {
+    "freeConsultation": "Konsultasi gratis",
+    "defaultTitle": "Perawatan Kanker & Onkologi di Tiongkok",
+    "defaultSubtitle": "Perawatan kanker kelas dunia dengan teknologi canggih & dukungan penuh perhatian"
+  },
+  "about": {
+    "defaultTitle": "Tentang Kami",
+    "defaultDescription": "Hueno Medtour China adalah platform layanan pariwisata medis internasional satu atap yang terhubung secara mulus, didedikasikan untuk memberikan solusi pariwisata medis yang disesuaikan, kelas dunia, dan terjangkau yang berpusat pada sumber daya perawatan kesehatan premium China."
   }
 }

@@ -115,5 +115,14 @@
     "freeConsultation": "Free consultation",
     "defaultTitle": "Stem Cell Therapy in China",
     "defaultSubtitle": "Advanced regenerative medicine with world-class facilities & expert care"
+  },
+  "cancer": {
+    "freeConsultation": "Free consultation",
+    "defaultTitle": "Cancer & Oncology Treatment in China",
+    "defaultSubtitle": "World-class cancer care with advanced technology & compassionate support"
+  },
+  "about": {
+    "defaultTitle": "About Us",
+    "defaultDescription": "Hueno Medtour China is a one-stop, seamlessly connected international medical tourism service platform dedicated to delivering customized, world-class and affordable medical tourism solutions centered on China's premium healthcare resources."
   }
 }

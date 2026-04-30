@@ -37,7 +37,7 @@ export default function CheckupEnvironment() {
             {images.map((img, index) => (
               <div
                 key={index}
-                className="aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-[#e8f4fc] to-[#d0e8f7] shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-[#e8f4fc] to-[#d0e8f7] shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-shadow duration-300"
               >
                 {img ? (
                   <img
