@@ -59,7 +59,7 @@ export default function CancerAdvantages() {
                 )}
               </div>
 
-              <h3 className="text-lg font-bold text-black">
+              <h3 className="text-lg font-normal text-black">
                 {advantage.title}
               </h3>
             </div>

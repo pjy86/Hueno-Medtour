@@ -25,13 +25,18 @@ export default function Hero() {
       {/* Background Image - Only show if configured */}
       {bgImage && (
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-right bg-no-repeat md:bg-center"
           style={{
             backgroundImage: `url(${bgImage})`
           }}
         >
           {/* Overlay - Subtle neutral overlay */}
-          <div className="absolute inset-0 bg-white/30" />
+          <div className="absolute inset-0 max-md:bg-white/50 md:bg-white/30" />
+          {/* Mobile: left emphasis so headline separates from right-weight background */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent md:hidden"
+            aria-hidden
+          />
         </div>
       )}
 

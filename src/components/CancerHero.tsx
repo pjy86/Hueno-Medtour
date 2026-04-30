@@ -26,11 +26,16 @@ export default function CancerHero() {
       >
         {bgImage && (
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-right bg-no-repeat md:bg-center"
             style={{
               backgroundImage: `url(${bgImage})`
             }}
-          />
+          >
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/78 to-transparent md:hidden"
+              aria-hidden
+            />
+          </div>
         )}
 
         <div className="relative z-10 w-full px-4 lg:px-16 py-20">
