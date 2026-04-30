@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { Mail, Phone, Facebook, Instagram } from 'lucide-react'
+import { Mail, MessageCircle, Facebook, Instagram } from 'lucide-react'
 import { useCMS, getContentByKey, getImageByKey, type CMSData } from '@/components/CMSProvider'
 
 const DEFAULT_EMAIL = 'huenomedtour@163.com'
@@ -45,9 +45,9 @@ function TiktokGlyph({ className }: { className?: string }) {
   )
 }
 
-function buildTelHref(phone: string) {
-  const digits = phone.replace(/[^\d+]/g, '')
-  return digits.startsWith('+') ? `tel:${digits}` : `tel:${digits.replace(/^\+?/, '+')}`
+function buildWhatsAppHref(phone: string) {
+  const digits = phone.replace(/[^\d]/g, '').replace(/^0+/, '')
+  return `https://wa.me/${digits}`
 }
 
 function SocialLink({
@@ -119,21 +119,23 @@ export default function TopBar() {
             ) : (
               <Mail className="h-4 w-4 shrink-0" strokeWidth={2} />
             )}
-            <span className="truncate hidden sm:inline">{email}</span>
+            <span className="truncate">{email}</span>
           </a>
           <a
-            href={buildTelHref(phone)}
+            href={buildWhatsAppHref(phone)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 min-w-0 text-white/95 hover:opacity-90"
           >
             {iconUrl(phoneIcon) ? (
               <TopBarIcon src={phoneIcon} alt="" />
             ) : (
-              <Phone className="h-4 w-4 shrink-0" strokeWidth={2} />
+              <MessageCircle className="h-4 w-4 shrink-0" strokeWidth={2} />
             )}
-            <span className="truncate hidden sm:inline">{phone}</span>
+            <span className="truncate">{phone}</span>
           </a>
         </div>
-        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+        <div className="hidden sm:flex items-center gap-3 sm:gap-4 shrink-0">
           <SocialLink
             href={urlTiktok}
             label="TikTok"
