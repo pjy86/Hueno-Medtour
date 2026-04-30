@@ -109,5 +109,11 @@
     "environmentImage": "Gambar Rumah Sakit",
     "defaultTitle": "Pemeriksaan Kesehatan Premium di Tiongkok",
     "defaultSubtitle": "Pemeriksaan Medis Cepat, Akurat, Komprehensif dengan Fasilitas Kelas Dunia & Harga Transparan"
+  },
+  "stemcell": {
+    "bookNow": "Pesan Sekarang",
+    "freeConsultation": "Konsultasi gratis",
+    "defaultTitle": "Terapi Sel Induk di Tiongkok",
+    "defaultSubtitle": "Kedokteran regeneratif canggih dengan fasilitas kelas dunia & perawatan ahli"
   }
 }

@@ -35,16 +35,35 @@ export function CMSProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<CMSData | null>(null)
 
   useEffect(() => {
-    fetch('/api/cms')
-      .then(async res => {
-        const json: unknown = await res.json()
-        if (!res.ok || !isValidCMSPayload(json)) {
-          console.error('CMS fetch failed or invalid response', res.status, json)
-          return
+    let cancelled = false
+
+    async function fetchWithRetry(attempts = 3, delay = 5000) {
+      for (let i = 0; i < attempts; i++) {
+        if (cancelled) return
+        try {
+          const res = await fetch('/api/cms')
+          const json: unknown = await res.json()
+          if (res.ok && isValidCMSPayload(json)) {
+            setData(json)
+            return
+          }
+          const isRetryable = res.status === 503 || res.status >= 500
+          if (!isRetryable || i === attempts - 1) {
+            console.error('CMS fetch failed or invalid response', res.status, json)
+            return
+          }
+        } catch (err) {
+          if (i === attempts - 1) {
+            console.error('CMS fetch error:', err)
+            return
+          }
         }
-        setData(json)
-      })
-      .catch(err => console.error('CMS fetch error:', err))
+        await new Promise(r => setTimeout(r, delay * (i + 1)))
+      }
+    }
+
+    fetchWithRetry()
+    return () => { cancelled = true }
   }, [])
 
   return (

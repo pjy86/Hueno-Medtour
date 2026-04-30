@@ -98,6 +98,59 @@ async function main() {
     { key: 'checkup_step_5_desc', en: 'Receive detailed report in your preferred language', zh: '提供详细的双语体检报告', id_text: 'Terima laporan detail dalam bahasa pilihan Anda' },
     { key: 'checkup_step_6_title', en: 'Long-term Follow-up', zh: '长期健康跟进', id_text: 'Tindak Lanjut Jangka Panjang' },
     { key: 'checkup_step_6_desc', en: 'Ongoing health management and support', zh: '持续的健康管理与跟踪服务', id_text: 'Manajemen kesehatan berkelanjutan' },
+
+    // Stem Cell page content
+    { key: 'stemcell_hero_title', en: 'Stem Cell Therapy in China', zh: '中国干细胞治疗', id_text: 'Terapi Sel Induk di Tiongkok' },
+    { key: 'stemcell_hero_subtitle', en: 'Advanced regenerative medicine with world-class facilities & expert care', zh: '先进再生医学，世界级设施与专业护理', id_text: 'Kedokteran regeneratif canggih dengan fasilitas kelas dunia & perawatan ahli' },
+
+    // Stem Cell Advantages (内容区1)
+    { key: 'stemcell_advantages_title', en: 'Stem Cell Advantages', zh: '干细胞治疗优势', id_text: 'Keunggulan Sel Induk' },
+    { key: 'stemcell_advantage_1_title', en: 'Regenerative Power', zh: '再生能力', id_text: 'Kekuatan Regeneratif' },
+    { key: 'stemcell_advantage_1_desc', en: 'Stem cells can differentiate into various cell types, promoting tissue repair and regeneration', zh: '干细胞可分化为多种细胞类型，促进组织修复和再生', id_text: 'Sel induk dapat berdiferensiasi menjadi berbagai jenis sel, mempromosikan perbaikan dan regenerasi jaringan' },
+    { key: 'stemcell_advantage_2_title', en: 'Minimally Invasive', zh: '微创治疗', id_text: 'Minimal Invasif' },
+    { key: 'stemcell_advantage_2_desc', en: 'Non-surgical procedures with shorter recovery time and fewer complications', zh: '非手术方式，恢复时间更短，并发症更少', id_text: 'Prosedur non-bedah dengan waktu pemulihan lebih singkat dan komplikasi lebih sedikit' },
+    { key: 'stemcell_advantage_3_title', en: 'Personalized Treatment', zh: '个性化治疗', id_text: 'Perawatan Personal' },
+    { key: 'stemcell_advantage_3_desc', en: 'Tailored therapy plans based on individual health conditions and needs', zh: '根据个人健康状况和需求量身定制的治疗方案', id_text: 'Rencana terapi yang disesuaikan berdasarkan kondisi dan kebutuhan kesehatan individu' },
+    { key: 'stemcell_advantage_4_title', en: 'Evidence-Based', zh: '循证医学', id_text: 'Berbasis Bukti' },
+    { key: 'stemcell_advantage_4_desc', en: 'Treatments backed by rigorous clinical research and international standards', zh: '基于严格临床研究和国际标准支持的治疗', id_text: 'Perawatan yang didukung oleh penelitian klinis ketat dan standar internasional' },
+    { key: 'stemcell_advantage_5_title', en: 'Multi-Disease Application', zh: '多疾病应用', id_text: 'Aplikasi Multi-Penyakit' },
+    { key: 'stemcell_advantage_5_desc', en: 'Effective for autoimmune, neurological, orthopedic and degenerative conditions', zh: '对自身免疫、神经、骨科及退行性疾病有效', id_text: 'Efektif untuk kondisi autoimun, neurologis, ortopedi dan degeneratif' },
+    { key: 'stemcell_advantage_6_title', en: 'Cost-Effective', zh: '高性价比', id_text: 'Hemat Biaya' },
+    { key: 'stemcell_advantage_6_desc', en: 'World-class treatment at a fraction of the cost compared to Western countries', zh: '与西方国家相比，以极低的成本获得世界级治疗', id_text: 'Perawatan kelas dunia dengan biaya yang jauh lebih rendah dibanding negara Barat' },
+
+    // Stem Cell Programs (内容区2)
+    { key: 'stemcell_programs_title', en: 'Stem Cell Therapy Programs in China', zh: '中国干细胞治疗方案', id_text: 'Program Terapi Sel Induk di Tiongkok' },
+    { key: 'stemcell_program_1_title', en: 'Anti-Aging & Rejuvenation', zh: '抗衰老与再生', id_text: 'Anti-Penuaan & Rejuvenasi' },
+    { key: 'stemcell_program_1_desc', en: 'Comprehensive stem cell programs targeting cellular aging and vitality restoration', zh: '针对细胞衰老和活力恢复的综合干细胞方案', id_text: 'Program sel induk komprehensif yang menargetkan penuaan seluler dan pemulihan vitalitas' },
+    { key: 'stemcell_program_2_title', en: 'Neurological Disorders', zh: '神经系统疾病', id_text: 'Gangguan Neurologis' },
+    { key: 'stemcell_program_2_desc', en: 'Advanced therapies for stroke recovery, spinal cord injury, and neurodegenerative diseases', zh: '针对中风恢复、脊髓损伤和神经退行性疾病的先进疗法', id_text: 'Terapi canggih untuk pemulihan stroke, cedera sumsum tulang belakang, dan penyakit neurodegeneratif' },
+    { key: 'stemcell_program_3_title', en: 'Autoimmune Conditions', zh: '自身免疫疾病', id_text: 'Kondisi Autoimun' },
+    { key: 'stemcell_program_3_desc', en: 'Immunomodulatory stem cell treatments for lupus, rheumatoid arthritis, and MS', zh: '针对狼疮、类风湿性关节炎和多发性硬化症的免疫调节干细胞治疗', id_text: 'Perawatan sel induk imunomodulator untuk lupus, artritis reumatoid, dan MS' },
+    { key: 'stemcell_program_4_title', en: 'Orthopedic Regeneration', zh: '骨科再生', id_text: 'Regenerasi Ortopedi' },
+    { key: 'stemcell_program_4_desc', en: 'Cartilage repair, joint regeneration, and bone healing with mesenchymal stem cells', zh: '使用间充质干细胞进行软骨修复、关节再生和骨骼愈合', id_text: 'Perbaikan tulang rawan, regenerasi sendi, dan penyembuhan tulang dengan sel induk mesenkim' },
+    { key: 'stemcell_program_5_title', en: 'Cardiovascular Therapy', zh: '心血管治疗', id_text: 'Terapi Kardiovaskular' },
+    { key: 'stemcell_program_5_desc', en: 'Stem cell-based cardiac repair and vascular regeneration programs', zh: '基于干细胞的心脏修复和血管再生方案', id_text: 'Program perbaikan jantung dan regenerasi vaskular berbasis sel induk' },
+    { key: 'stemcell_program_6_title', en: 'Diabetes Management', zh: '糖尿病管理', id_text: 'Manajemen Diabetes' },
+    { key: 'stemcell_program_6_desc', en: 'Islet cell regeneration and immune modulation for type 1 and type 2 diabetes', zh: '针对1型和2型糖尿病的胰岛细胞再生和免疫调节', id_text: 'Regenerasi sel pulau Langerhans dan modulasi kekebalan untuk diabetes tipe 1 dan tipe 2' },
+
+    // Stem Cell Why China (内容区3)
+    { key: 'stemcell_why_china_title', en: 'Stem Cell Therapy Programs in China', zh: '中国干细胞治疗方案', id_text: 'Program Terapi Sel Induk di Tiongkok' },
+    { key: 'stemcell_why_china_1_title', en: 'Pioneering Research', zh: '前沿研究', id_text: 'Riset Perintis' },
+    { key: 'stemcell_why_china_1_desc', en: 'China leads global stem cell clinical trials with over 500 registered studies', zh: '中国在全球干细胞临床试验中领先，注册研究超过500项', id_text: 'China memimpin uji klinis sel induk global dengan lebih dari 500 studi terdaftar' },
+    { key: 'stemcell_why_china_2_title', en: 'World-Class Facilities', zh: '世界级设施', id_text: 'Fasilitas Kelas Dunia' },
+    { key: 'stemcell_why_china_2_desc', en: 'State-of-the-art GMP labs and specialized stem cell treatment centers', zh: '最先进的GMP实验室和专科干细胞治疗中心', id_text: 'Lab GMP mutakhir dan pusat perawatan sel induk khusus' },
+    { key: 'stemcell_why_china_3_title', en: 'Expert Medical Teams', zh: '专家医疗团队', id_text: 'Tim Medis Ahli' },
+    { key: 'stemcell_why_china_3_desc', en: 'Internationally trained specialists with decades of stem cell research experience', zh: '具有数十年干细胞研究经验的国际培训专家', id_text: 'Spesialis berpelatihan internasional dengan pengalaman riset sel induk selama puluhan tahun' },
+    { key: 'stemcell_why_china_4_title', en: 'Regulatory Support', zh: '政策支持', id_text: 'Dukungan Regulasi' },
+    { key: 'stemcell_why_china_4_desc', en: 'Special medical zones with streamlined approval processes for innovative therapies', zh: '特殊医疗区域为创新疗法提供简化的审批流程', id_text: 'Zona medis khusus dengan proses persetujuan yang disederhanakan untuk terapi inovatif' },
+    { key: 'stemcell_why_china_5_title', en: 'Affordable Excellence', zh: '优质平价', id_text: 'Keunggulan Terjangkau' },
+    { key: 'stemcell_why_china_5_desc', en: 'Premium treatments at 60-80% lower cost compared to Western alternatives', zh: '与西方替代方案相比，费用降低60-80%的优质治疗', id_text: 'Perawatan premium dengan biaya 60-80% lebih rendah dibanding alternatif Barat' },
+    { key: 'stemcell_why_china_6_title', en: 'Holistic Care', zh: '全面护理', id_text: 'Perawatan Holistik' },
+    { key: 'stemcell_why_china_6_desc', en: 'Complete patient journey from consultation to post-treatment follow-up', zh: '从咨询到治疗后随访的完整患者旅程', id_text: 'Perjalanan pasien lengkap dari konsultasi hingga tindak lanjut pasca-perawatan' },
+
+    // Stem Cell Boao Zone (内容区4)
+    { key: 'stemcell_boao_title', en: 'About Boao Lecheng International Medical Tourism Pilot Zone', zh: '关于博鳌乐城国际医疗旅游先行区', id_text: 'Tentang Zona Percontohan Pariwisata Medis Internasional Boao Lecheng' },
+    { key: 'stemcell_boao_desc', en: '<p>The Boao Lecheng International Medical Tourism Pilot Zone is China\'s only special medical zone approved by the State Council, offering unprecedented access to cutting-edge medical technologies and stem cell therapies. Located in Hainan Province, this pilot zone allows the use of internationally approved drugs, medical devices, and stem cell therapies that are not yet available elsewhere in China, providing patients with early access to the world\'s most advanced medical treatments.</p>', zh: '<p>博鳌乐城国际医疗旅游先行区是经国务院批准的中国唯一特殊医疗区域，提供前所未有的尖端医疗技术和干细胞治疗机会。位于海南省，该先行区允许使用尚未在中国其他地区上市的国际已批准药物、医疗器械和干细胞疗法，让患者提前获得世界最先进的医疗治疗。</p>', id_text: '<p>Zona Percontohan Pariwisata Medis Internasional Boao Lecheng adalah satu-satunya zona medis khusus di China yang disetujui oleh Dewan Negara, menawarkan akses tanpa preseden ke teknologi medis canggih dan terapi sel induk. Terletak di Provinsi Hainan, zona percontohan ini memungkinkan penggunaan obat, perangkat medis, dan terapi sel induk yang disetujui secara internasional yang belum tersedia di tempat lain di China, memberikan pasien akses awal ke perawatan medis paling canggih di dunia.</p>' },
   ]
 
   // Only create content if it doesn't exist (to preserve user edits)
@@ -176,6 +229,21 @@ async function main() {
     { key: 'checkup_env_2', url: null },
     { key: 'checkup_env_3', url: null },
     { key: 'checkup_env_4', url: null },
+    // Stem Cell page images
+    { key: 'stemcell_hero_bg', url: null },
+    { key: 'stemcell_advantage_1_icon', url: null },
+    { key: 'stemcell_advantage_2_icon', url: null },
+    { key: 'stemcell_advantage_3_icon', url: null },
+    { key: 'stemcell_advantage_4_icon', url: null },
+    { key: 'stemcell_advantage_5_icon', url: null },
+    { key: 'stemcell_advantage_6_icon', url: null },
+    { key: 'stemcell_why_china_1_image', url: null },
+    { key: 'stemcell_why_china_2_image', url: null },
+    { key: 'stemcell_why_china_3_image', url: null },
+    { key: 'stemcell_why_china_4_image', url: null },
+    { key: 'stemcell_why_china_5_image', url: null },
+    { key: 'stemcell_why_china_6_image', url: null },
+    { key: 'stemcell_boao_image', url: null },
   ]
 
   for (const image of images) {

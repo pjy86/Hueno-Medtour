@@ -1,13 +1,14 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { useCMS, getImageByKey, getContentByKey } from '@/components/CMSProvider'
 
 export default function Hero() {
   const t = useTranslations('hero')
   const params = useParams()
+  const router = useRouter()
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
 
@@ -54,19 +55,29 @@ export default function Hero() {
             />
           )}
 
-          {/* CTA Button */}
-          <button
-            onClick={() => {
-              const element = document.getElementById('contact')
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              }
-            }}
-            className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
-          >
-            {ctaText}
-            <ArrowRight size={20} />
-          </button>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={() => router.push(`/${locale}/checkup`)}
+              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+            >
+              Checkup
+              <ArrowRight size={20} />
+            </button>
+            <button
+              onClick={() => router.push(`/${locale}/stem-cell`)}
+              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+            >
+              Stem Cell
+              <ArrowRight size={20} />
+            </button>
+            <button
+              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+            >
+              Cancer & Oncology
+              <ArrowRight size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Decorative Elements */}

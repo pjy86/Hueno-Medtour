@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Upload, Save, Check, Image as ImageIcon, X, Eye, Home, Stethoscope } from 'lucide-react'
+import { ArrowLeft, Upload, Save, Check, Image as ImageIcon, X, Eye, Home, Stethoscope, Microscope } from 'lucide-react'
 
 interface Image {
   id: number
@@ -11,11 +11,12 @@ interface Image {
   url: string | null
 }
 
-type Category = 'home' | 'checkup'
+type Category = 'home' | 'checkup' | 'stemcell'
 
 const categories: { id: Category; label: string; icon: React.ReactNode }[] = [
   { id: 'home', label: 'Homepage', icon: <Home size={18} /> },
-  { id: 'checkup', label: 'Checkup Page', icon: <Stethoscope size={18} /> }
+  { id: 'checkup', label: 'Checkup Page', icon: <Stethoscope size={18} /> },
+  { id: 'stemcell', label: 'Stem Cell Page', icon: <Microscope size={18} /> }
 ]
 
 // Define which keys belong to which category
@@ -27,13 +28,16 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
       'service_image_', 'testimonial_'
     ]
     const isHomeKey = homePrefixes.some(prefix => key.startsWith(prefix))
-    // Exclude checkup-specific keys
+    // Exclude checkup and stemcell specific keys
     const isCheckupKey = key.startsWith('checkup_')
-    return isHomeKey && !isCheckupKey
+    const isStemcellKey = key.startsWith('stemcell_')
+    return isHomeKey && !isCheckupKey && !isStemcellKey
   },
   checkup: (key) => {
-    // Checkup page keys
     return key.startsWith('checkup_')
+  },
+  stemcell: (key) => {
+    return key.startsWith('stemcell_')
   }
 }
 

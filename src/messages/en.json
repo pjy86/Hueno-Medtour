@@ -109,5 +109,11 @@
     "environmentImage": "Hospital Image",
     "defaultTitle": "Premium Health Checkup in China",
     "defaultSubtitle": "Fast, Accurate, Comprehensive Medical Screening with World-Class Facilities & Transparent Pricing"
+  },
+  "stemcell": {
+    "bookNow": "Book Now",
+    "freeConsultation": "Free consultation",
+    "defaultTitle": "Stem Cell Therapy in China",
+    "defaultSubtitle": "Advanced regenerative medicine with world-class facilities & expert care"
   }
 }

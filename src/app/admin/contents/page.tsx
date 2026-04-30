@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Save, Check, Loader2, Home, Stethoscope } from 'lucide-react'
+import { ArrowLeft, Save, Check, Loader2, Home, Stethoscope, Microscope } from 'lucide-react'
 
 interface Content {
   id: number
@@ -13,11 +13,12 @@ interface Content {
   id_text: string | null
 }
 
-type Category = 'home' | 'checkup'
+type Category = 'home' | 'checkup' | 'stemcell'
 
 const categories: { id: Category; label: string; icon: React.ReactNode }[] = [
   { id: 'home', label: 'Homepage', icon: <Home size={18} /> },
-  { id: 'checkup', label: 'Checkup Page', icon: <Stethoscope size={18} /> }
+  { id: 'checkup', label: 'Checkup Page', icon: <Stethoscope size={18} /> },
+  { id: 'stemcell', label: 'Stem Cell Page', icon: <Microscope size={18} /> }
 ]
 
 // Define which keys belong to which category
@@ -29,9 +30,10 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
       'testimonial_', 'footer_', 'contact_', 'trust'
     ]
     const isHomeKey = homePrefixes.some(prefix => key.startsWith(prefix))
-    // Exclude checkup-specific keys
+    // Exclude checkup and stemcell specific keys
     const isCheckupKey = key.startsWith('checkup_') || /^package_\d+/.test(key)
-    return isHomeKey && !isCheckupKey
+    const isStemcellKey = key.startsWith('stemcell_')
+    return isHomeKey && !isCheckupKey && !isStemcellKey
   },
   checkup: (key) => {
     // Checkup page keys
@@ -43,6 +45,9 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
     // Also include trust indicators for checkup page
     const isTrustKey = /^trust[1-3]$/.test(key)
     return isCheckupKey || isTrustKey
+  },
+  stemcell: (key) => {
+    return key.startsWith('stemcell_')
   }
 }
 
@@ -50,7 +55,8 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
 const hiddenKeys = [
   /^service_\d+_title$/,     // Hide service title fields
   /^feature_4_/,            // Hide feature 4 fields
-  /^checkup_service_\d+_title$/  // Hide checkup service title fields (not displayed in UI)
+  /^checkup_service_\d+_title$/,  // Hide checkup service title fields (not displayed in UI)
+  /^stemcell_advantage_\d+_desc$/  // Hide stemcell advantage desc fields (not displayed in UI)
 ]
 
 export default function ContentsPage() {
@@ -127,7 +133,9 @@ export default function ContentsPage() {
 
   const isRichText = (key: string) => {
     return key === 'services_description' || key === 'hero_title' ||
-           key === 'checkup_hero_title' || key === 'checkup_hero_subtitle'
+           key === 'checkup_hero_title' || key === 'checkup_hero_subtitle' ||
+           key === 'stemcell_hero_title' || key === 'stemcell_hero_subtitle' ||
+           key === 'stemcell_boao_desc'
   }
 
   const filteredContents = contents.filter(content => {

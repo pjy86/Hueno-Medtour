@@ -109,5 +109,11 @@
     "environmentImage": "医院图片",
     "defaultTitle": "中国高端体检服务",
     "defaultSubtitle": "快速、精准、全面的健康筛查——世界级医疗设施与透明定价"
+  },
+  "stemcell": {
+    "bookNow": "立即预约",
+    "freeConsultation": "免费咨询",
+    "defaultTitle": "中国干细胞治疗",
+    "defaultSubtitle": "先进再生医学，世界级设施与专业护理"
   }
 }
