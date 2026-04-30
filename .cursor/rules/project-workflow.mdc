@@ -1,0 +1,19 @@
+---
+description: Project workflow - build verification and code quality
+alwaysApply: true
+---
+
+# Project Workflow Rules
+
+## Build Verification After Code Changes
+
+After writing or modifying code and starting the dev server, you MUST run the full build to verify there are no TypeScript type errors. `next dev` only does syntax transpilation and does NOT catch type errors — they will only surface during `npm run build` on the CI/CD (Render).
+
+```bash
+# After code changes, always run:
+npx tsc --noEmit
+```
+
+If type errors are found, fix them before pushing. This prevents deploy failures on Render.
+
+**Why:** The build script (`npm run build`) runs `prisma generate && tsc --noEmit && next build`. The `tsc --noEmit` step performs full static type checking, which `next dev` skips entirely. Code that works locally in dev mode can still fail the production build.
