@@ -88,25 +88,27 @@ export default function CheckupPackages() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-4 lg:p-6 flex flex-col justify-between h-[260px] lg:h-[260px]">
+                  <div className="p-4 lg:p-6 flex flex-col justify-between min-h-[260px]">
                     {/* Package Title */}
                     <h3 className="text-lg font-bold text-[#1a3a5c]">
                       {title}
                     </h3>
 
                     {/* Content */}
-                    <p className="text-sm text-gray-600 whitespace-pre-line leading-relaxed overflow-hidden">
+                    <p className="text-sm text-gray-600 whitespace-pre-line leading-relaxed line-clamp-6">
                       {content}
                     </p>
 
                     {/* Book Button */}
-                    <button
-                      onClick={() => setIsModalOpen(true)}
-                      className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer w-fit"
-                    >
-                      {t('bookNow')}
-                      <ArrowRight size={14} />
-                    </button>
+                    <div className="mt-auto pt-4">
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer w-fit"
+                      >
+                        {t('bookNow')}
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               )

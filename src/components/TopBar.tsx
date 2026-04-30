@@ -108,8 +108,8 @@ export default function TopBar() {
       className="fixed top-0 left-0 right-0 z-[60] h-10 text-white text-xs sm:text-sm"
       style={{ backgroundColor: '#1861D7' }}
     >
-      <div className="h-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 min-w-0">
+      <div className="h-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 flex items-center justify-between gap-x-3">
+        <div className="flex items-center gap-x-2 sm:gap-x-4 min-w-0 overflow-hidden">
           <a
             href={`mailto:${email}`}
             className="inline-flex items-center gap-1.5 min-w-0 text-white/95 hover:opacity-90"
@@ -119,7 +119,7 @@ export default function TopBar() {
             ) : (
               <Mail className="h-4 w-4 shrink-0" strokeWidth={2} />
             )}
-            <span className="truncate">{email}</span>
+            <span className="truncate hidden sm:inline">{email}</span>
           </a>
           <a
             href={buildTelHref(phone)}
@@ -130,7 +130,7 @@ export default function TopBar() {
             ) : (
               <Phone className="h-4 w-4 shrink-0" strokeWidth={2} />
             )}
-            <span className="truncate">{phone}</span>
+            <span className="truncate hidden sm:inline">{phone}</span>
           </a>
         </div>
         <div className="flex items-center gap-3 sm:gap-4 shrink-0">
