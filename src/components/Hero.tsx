@@ -77,6 +77,7 @@ export default function Hero() {
               <ArrowRight size={20} />
             </button>
             <button
+              onClick={() => router.push(`/${locale}/cancer-oncology`)}
               className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
             >
               Cancer & Oncology
