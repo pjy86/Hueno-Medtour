@@ -72,14 +72,15 @@ export default function Features() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Match WhyChina grid: gap-6, no card padding → same column width & image size at sm:grid-cols-2 */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ key, title, subtitle, desc, image }) => (
             <div
               key={key}
-              className="flex flex-col items-center text-center p-6 rounded-xl"
+              className="flex min-w-0 flex-col items-center text-center"
             >
-              {/* Image */}
-              <div className="w-80 h-[250px] mb-6 overflow-hidden bg-[#e8f4fc] rounded-xl">
+              {/* Image frame: same classes/order as WhyChina `why_china_*` tiles (except bg color) */}
+              <div className="w-full aspect-video bg-[#e8f4fc] rounded-lg overflow-hidden mb-4 relative">
                 <FeatureImage src={image} title={title} />
               </div>
 
