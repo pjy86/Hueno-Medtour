@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { FileText, Image, MessageSquare, LogOut, ChevronRight, Settings } from 'lucide-react'
+import { adminFetch } from '@/lib/admin-client'
 
 interface Stats {
   contents: number
@@ -29,8 +30,8 @@ export default function AdminDashboard() {
   const fetchData = async () => {
     try {
       const [cmsRes, contactsRes] = await Promise.all([
-        fetch('/api/cms'),
-        fetch('/api/contact')
+        adminFetch('/api/cms', router),
+        adminFetch('/api/contact', router)
       ])
 
       if (cmsRes.ok && contactsRes.ok) {

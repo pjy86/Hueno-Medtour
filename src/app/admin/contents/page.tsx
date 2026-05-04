@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Save, Check, Loader2, Home, Stethoscope, Microscope, Activity, Info, ChevronDown, ChevronUp } from 'lucide-react'
+import { adminFetch } from '@/lib/admin-client'
 
 interface Content {
   id: number
@@ -132,7 +133,7 @@ export default function ContentsPage() {
 
   const fetchContents = async () => {
     try {
-      const response = await fetch('/api/cms')
+      const response = await adminFetch('/api/cms', router)
       if (response.ok) {
         const data = await response.json()
         setContents(data.contents || [])
@@ -156,7 +157,7 @@ export default function ContentsPage() {
 
     setSaving(true)
     try {
-      const response = await fetch('/api/cms/update', {
+      const response = await adminFetch('/api/cms/update', router, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -190,7 +191,7 @@ export default function ContentsPage() {
 
     setSavingSection(sectionId || 'all')
     try {
-      const response = await fetch('/api/cms/update', {
+      const response = await adminFetch('/api/cms/update', router, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

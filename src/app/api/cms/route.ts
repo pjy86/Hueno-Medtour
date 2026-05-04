@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { requireAdmin } from '@/lib/admin-auth'
 
 async function retry<T>(fn: () => Promise<T>, retries = 2, delayMs = 3000): Promise<T> {
   try {
@@ -12,7 +13,12 @@ async function retry<T>(fn: () => Promise<T>, retries = 2, delayMs = 3000): Prom
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authResult = requireAdmin(request)
+  if (authResult instanceof NextResponse) {
+    return authResult
+  }
+
   try {
     const [contents, images] = await retry(() =>
       Promise.all([

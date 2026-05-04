@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { prisma } from '@/lib/db'
+import { resolveAdminJwtSecret } from '@/lib/admin-auth'
 
 export async function POST(request: NextRequest) {
   try {
+    const secretResolved = resolveAdminJwtSecret()
+    if ('response' in secretResolved) {
+      return secretResolved.response
+    }
+
     const { username, password } = await request.json()
 
     if (!username || !password) {
@@ -36,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     const token = jwt.sign(
       { adminId: admin.id, username: admin.username },
-      process.env.NEXTAUTH_SECRET || 'secret',
+      secretResolved.secret,
       { expiresIn: '7d' }
     )
 
