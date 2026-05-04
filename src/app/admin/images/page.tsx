@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Upload, Save, Check, Image as ImageIcon, X, Eye, Home, Stethoscope, Microscope, Activity, Info, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
+import { adminFetch } from '@/lib/admin-client'
 
 interface Image {
   id: number
@@ -119,7 +120,7 @@ export default function ImagesPage() {
 
   const fetchImages = async () => {
     try {
-      const response = await fetch('/api/cms')
+      const response = await adminFetch('/api/cms', router)
       if (response.ok) {
         const data = await response.json()
         setImages(data.images || [])
@@ -143,7 +144,7 @@ export default function ImagesPage() {
 
     setSavingSection(key)
     try {
-      const response = await fetch('/api/cms/update', {
+      const response = await adminFetch('/api/cms/update', router, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -175,7 +176,7 @@ export default function ImagesPage() {
 
     setSavingSection(sectionId || 'all')
     try {
-      const response = await fetch('/api/cms/update', {
+      const response = await adminFetch('/api/cms/update', router, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -69,6 +69,14 @@ npm run build
 npm start
 ```
 
+## Git workflow
+
+**Default:** Work on a **feature branch**, open a **Pull Request into `main`**, and use **Render Pull Request Previews** (when enabled) to validate a production-like build before merging. Merge the PR on GitHub to ship to production.
+
+Do **not** routinely push feature work straight to **`main`** (that skips the PR preview path). **Exception:** only when explicitly requested (e.g. hotfix agreed with the team), with the reason communicated.
+
+See also `.cursor/rules/project-workflow.mdc` for full project workflow notes.
+
 ## Admin CMS
 
 Access the admin panel at `/admin/login`
@@ -77,6 +85,10 @@ Access the admin panel at `/admin/login`
 - Default password: `admin123`
 
 **Important**: Change the admin password after first login!
+
+Admin HTTP APIs (`GET /api/cms`, `PUT /api/cms/update`, and `GET /api/contact`) require a valid JWT in `Authorization: Bearer <token>`; the admin UI sends this automatically. The visitor-facing locales load CMS via server-side [`getCmsData()`](src/lib/get-cms-data.ts) only (they do **not** call `GET /api/cms`). `POST /api/contact` stays public for form submissions.
+
+**Production:** Set a strong secret in `NEXTAUTH_SECRET` or `ADMIN_JWT_SECRET`. If neither is set, or the value is the literal string `secret`, the app returns `503` in production (`NODE_ENV=production`) instead of issuing or verifying tokens. Local dev falls back to the weak default only when those variables are unset.
 
 ## Deployment to Render
 
