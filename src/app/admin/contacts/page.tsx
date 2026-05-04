@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Search, Download, X, Mail, Phone, Globe, Calendar, User, Heart, MessageCircle } from 'lucide-react'
-import { adminFetch } from '@/lib/admin-client'
+import { adminFetch, checkAdminSession } from '@/lib/admin-client'
 
 interface Contact {
   id: number
@@ -33,12 +33,14 @@ export default function ContactsPage() {
   const [dateTo, setDateTo] = useState('')
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
-    if (!token) {
-      router.push('/admin/login')
-      return
-    }
-    fetchContacts()
+    void (async () => {
+      const ok = await checkAdminSession()
+      if (!ok) {
+        router.push('/admin/login')
+        return
+      }
+      fetchContacts()
+    })()
   }, [router])
 
   const fetchContacts = async () => {

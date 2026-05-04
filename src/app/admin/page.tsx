@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { FileText, Image, MessageSquare, LogOut, ChevronRight, Settings } from 'lucide-react'
-import { adminFetch } from '@/lib/admin-client'
+import { FileText, Image, MessageSquare, LogOut, ChevronRight, Settings, KeyRound } from 'lucide-react'
+import { adminFetch, checkAdminSession } from '@/lib/admin-client'
+import { MIN_ADMIN_PASSWORD_LENGTH } from '@/lib/admin-password-policy'
 
 interface Stats {
   contents: number
@@ -16,15 +17,21 @@ export default function AdminDashboard() {
   const router = useRouter()
   const [stats, setStats] = useState<Stats>({ contents: 0, images: 0, contacts: 0 })
   const [loading, setLoading] = useState(true)
+  const [pwCurrent, setPwCurrent] = useState('')
+  const [pwNew, setPwNew] = useState('')
+  const [pwConfirm, setPwConfirm] = useState('')
+  const [pwMsg, setPwMsg] = useState('')
+  const [pwSaving, setPwSaving] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
-    if (!token) {
-      router.push('/admin/login')
-      return
-    }
-
-    fetchData()
+    void (async () => {
+      const ok = await checkAdminSession()
+      if (!ok) {
+        router.push('/admin/login')
+        return
+      }
+      await fetchData()
+    })()
   }, [router])
 
   const fetchData = async () => {
@@ -50,9 +57,39 @@ export default function AdminDashboard() {
     }
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await fetch('/api/admin/logout', { method: 'POST', credentials: 'include' })
     localStorage.removeItem('adminToken')
     router.push('/admin/login')
+  }
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setPwMsg('')
+    if (pwNew !== pwConfirm) {
+      setPwMsg('New passwords do not match')
+      return
+    }
+    setPwSaving(true)
+    try {
+      const res = await fetch('/api/admin/change-password', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currentPassword: pwCurrent, newPassword: pwNew })
+      })
+      const data = (await res.json().catch(() => ({}))) as { error?: string }
+      if (res.ok) {
+        setPwMsg('Password updated.')
+        setPwCurrent('')
+        setPwNew('')
+        setPwConfirm('')
+      } else {
+        setPwMsg(data.error || 'Failed to update password')
+      }
+    } finally {
+      setPwSaving(false)
+    }
   }
 
   const menuItems = [
@@ -98,7 +135,8 @@ export default function AdminDashboard() {
             <h1 className="text-xl font-bold text-[#1a3a5c]">HN Travel CMS</h1>
           </div>
           <button
-            onClick={handleLogout}
+            type="button"
+            onClick={() => void handleLogout()}
             className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
             <LogOut size={20} />
@@ -125,7 +163,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {menuItems.map(item => (
             <Link
               key={item.href}
@@ -145,6 +183,62 @@ export default function AdminDashboard() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="bg-white rounded-xl shadow p-6 max-w-lg">
+          <div className="flex items-center gap-2 mb-4">
+            <KeyRound className="text-[#1a3a5c]" size={22} />
+            <h3 className="text-lg font-semibold text-gray-900">Change password</h3>
+          </div>
+          <p className="text-sm text-gray-500 mb-4">
+            New password must be at least {MIN_ADMIN_PASSWORD_LENGTH} characters.
+          </p>
+          <form onSubmit={handleChangePassword} className="space-y-4">
+            {pwMsg && (
+              <div
+                className={`text-sm ${pwMsg.includes('updated') ? 'text-green-600' : 'text-red-600'}`}
+              >
+                {pwMsg}
+              </div>
+            )}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Current password</label>
+              <input
+                type="password"
+                value={pwCurrent}
+                onChange={e => setPwCurrent(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4fa3e8] outline-none"
+                autoComplete="current-password"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">New password</label>
+              <input
+                type="password"
+                value={pwNew}
+                onChange={e => setPwNew(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4fa3e8] outline-none"
+                autoComplete="new-password"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Confirm new password</label>
+              <input
+                type="password"
+                value={pwConfirm}
+                onChange={e => setPwConfirm(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4fa3e8] outline-none"
+                autoComplete="new-password"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={pwSaving}
+              className="px-4 py-2 bg-[#4fa3e8] hover:bg-[#3d8fd4] disabled:bg-gray-400 text-white rounded-lg text-sm font-medium"
+            >
+              {pwSaving ? 'Saving...' : 'Update password'}
+            </button>
+          </form>
         </div>
       </main>
     </div>

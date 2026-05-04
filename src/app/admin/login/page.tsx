@@ -21,15 +21,21 @@ export default function AdminLogin() {
       const response = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ username, password })
       })
 
       if (response.ok) {
-        const data = await response.json()
-        localStorage.setItem('adminToken', data.token)
         router.push('/admin')
       } else {
-        setError('Invalid credentials')
+        let msg = 'Login failed'
+        try {
+          const data = (await response.json()) as { error?: string }
+          if (data.error) msg = data.error
+        } catch {
+          if (response.status === 429) msg = 'Too many attempts. Please try again later.'
+        }
+        setError(msg)
       }
     } catch {
       setError('Login failed')

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Upload, Save, Check, Image as ImageIcon, X, Eye, Home, Stethoscope, Microscope, Activity, Info, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
-import { adminFetch } from '@/lib/admin-client'
+import { adminFetch, checkAdminSession } from '@/lib/admin-client'
 
 interface Image {
   id: number
@@ -105,12 +105,14 @@ export default function ImagesPage() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
-    if (!token) {
-      router.push('/admin/login')
-      return
-    }
-    fetchImages()
+    void (async () => {
+      const ok = await checkAdminSession()
+      if (!ok) {
+        router.push('/admin/login')
+        return
+      }
+      fetchImages()
+    })()
   }, [router])
 
   useEffect(() => {

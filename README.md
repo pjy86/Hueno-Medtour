@@ -82,13 +82,40 @@ See also `.cursor/rules/project-workflow.mdc` for full project workflow notes.
 Access the admin panel at `/admin/login`
 
 - Default username: `admin`
-- Default password: `admin123`
+- Default password: `admin123` (created by `npm run db:seed` when no `admin` user exists)
 
-**Important**: Change the admin password after first login!
+**Important:** Change the password after first login. New passwords must be at least **12 characters** (enforced on the change-password form and on the ops script below).
 
-Admin HTTP APIs (`GET /api/cms`, `PUT /api/cms/update`, and `GET /api/contact`) require a valid JWT in `Authorization: Bearer <token>`; the admin UI sends this automatically. The visitor-facing locales load CMS via server-side [`getCmsData()`](src/lib/get-cms-data.ts) only (they do **not** call `GET /api/cms`). `POST /api/contact` stays public for form submissions.
+### Session and APIs
 
-**Production:** Set a strong secret in `NEXTAUTH_SECRET` or `ADMIN_JWT_SECRET`. If neither is set, or the value is the literal string `secret`, the app returns `503` in production (`NODE_ENV=production`) instead of issuing or verifying tokens. Local dev falls back to the weak default only when those variables are unset.
+- Sessions use an **HttpOnly** cookie `admin_session` (7-day JWT). Admin UI calls use **credentialed** `fetch` (`credentials: 'include'`). `Authorization: Bearer` is still accepted for scripts and tooling.
+- Protected routes include `GET /api/admin/session`, `POST /api/admin/logout`, `POST /api/admin/change-password`, `GET /api/cms`, `PUT /api/cms/update`, and `GET /api/contact`.
+- The public site loads CMS via server-side [`getCmsData()`](src/lib/get-cms-data.ts) only (it does **not** call `GET /api/cms`). `POST /api/contact` remains public for form submissions.
+
+### Login rate limit
+
+Per client IP (from `x-forwarded-for` / `x-real-ip`), login attempts are limited (default **15** per **900** seconds). Override with optional env:
+
+```env
+ADMIN_LOGIN_MAX_ATTEMPTS_PER_WINDOW=15
+ADMIN_LOGIN_WINDOW_SECONDS=900
+```
+
+The counter is held **in server memory**; if you run multiple Node instances, each applies its own limit (tighter in aggregate).
+
+### Production secrets
+
+Set a strong value in `NEXTAUTH_SECRET` or `ADMIN_JWT_SECRET`. If neither is set, or the value is the literal `secret`, the app returns **503** in production when issuing or verifying tokens. Local dev can use the weak default when unset.
+
+### Forgot admin password (ops)
+
+No self-service email reset is configured. With database access, set a new password from your machine (same `DATABASE_URL` as production):
+
+```bash
+npm run admin:set-password -- <username> <newPassword>
+```
+
+`newPassword` must satisfy the minimum length rule.
 
 ## Deployment to Render
 
