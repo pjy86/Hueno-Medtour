@@ -11,14 +11,19 @@ export interface AdminJwtPayload {
 
 const WEAK_DEFAULT_SECRET = 'secret'
 
-/** Render sets `IS_PULL_REQUEST=true` for PR preview deployments only. See https://render.com/docs/environment-variables */
+/** Render sets `RENDER=true` on all deploys. See https://render.com/docs/environment-variables */
+function isRenderRuntime(): boolean {
+  return process.env.RENDER === 'true'
+}
+
+/** Render sets `IS_PULL_REQUEST=true` for PR preview deployments only. */
 function isRenderPullRequestPreview(): boolean {
   return process.env.IS_PULL_REQUEST === 'true'
 }
 
 /**
- * Deterministic JWT secret per preview deploy (distinct from prod). Allows admin login on
- * PR previews when NEXTAUTH_SECRET is not synced from the prod service blueprint.
+ * JWT secret for PR previews when env is not synced (distinct from production).
+ * Includes commit so previews stay isolated; admins re-login after redeploys is fine.
  */
 function deriveRenderPreviewJwtSecret(): string {
   const entropy = [
@@ -31,9 +36,21 @@ function deriveRenderPreviewJwtSecret(): string {
 }
 
 /**
+ * Stable JWT secret for a production Render web service when no explicit env is set.
+ * Tied to `RENDER_SERVICE_ID` so it survives normal deploys without invalidating sessions
+ * on every commit (unlike hashing the commit SHA).
+ */
+function deriveRenderProductionJwtSecret(): string | null {
+  const id = process.env.RENDER_SERVICE_ID?.trim()
+  if (!id) return null
+  return createHash('sha256').update(`hntravel-admin-jwt-v1|prod|${id}`).digest('hex')
+}
+
+/**
  * Resolves JWT signing key: `ADMIN_JWT_SECRET` overrides `NEXTAUTH_SECRET`.
- * In production: must set a strong value; `'secret'` is rejected.
- * On Render pull request previews, if those are unset, a per-preview derived secret is used.
+ * In production outside Render: those must be set; literal `secret` is rejected.
+ * On Render: if unset, derives a secret (PR previews vs production web service) so admin works
+ * without manual env when Blueprint secrets are missing.
  */
 export function resolveAdminJwtSecret(): { secret: string } | { response: NextResponse } {
   const isProd = process.env.NODE_ENV === 'production'
@@ -43,11 +60,21 @@ export function resolveAdminJwtSecret(): { secret: string } | { response: NextRe
     raw = deriveRenderPreviewJwtSecret()
   }
 
+  if (!raw && isProd && isRenderRuntime()) {
+    const derived = deriveRenderProductionJwtSecret()
+    if (derived) {
+      raw = derived
+    }
+  }
+
   if (!raw) {
     if (isProd) {
       return {
         response: NextResponse.json(
-          { error: 'Server misconfiguration: set ADMIN_JWT_SECRET or NEXTAUTH_SECRET' },
+          {
+            error:
+              'Server misconfiguration: set ADMIN_JWT_SECRET or NEXTAUTH_SECRET (required when not running on Render, or if RENDER_SERVICE_ID is missing)'
+          },
           { status: 503 }
         )
       }
