@@ -107,7 +107,7 @@ The counter is held **in server memory**; if you run multiple Node instances, ea
 
 Set a strong value in `NEXTAUTH_SECRET` or `ADMIN_JWT_SECRET`. If neither is set, or the value is the literal `secret`, the app returns **503** in production when issuing or verifying tokens. Local dev can use the weak default when unset.
 
-**Render pull request previews** run with `NODE_ENV=production` but often do not get the same secrets as your production web service. If you only see the misconfiguration 503 on a PR preview URL, add `NEXTAUTH_SECRET` (or `ADMIN_JWT_SECRET`) in that preview service’s environment on the Render dashboard—or use the built-in fallback: when Render sets `IS_PULL_REQUEST=true`, the app derives a preview-only JWT secret from `RENDER_SERVICE_ID` / `RENDER_GIT_COMMIT` (tokens from a preview never validate on production).
+**On Render** (`RENDER=true`), if `NEXTAUTH_SECRET` / `ADMIN_JWT_SECRET` are unset, the app derives a JWT signing key from Render’s own env (PR previews use `IS_PULL_REQUEST` + commit; production web services use a **stable** hash of `RENDER_SERVICE_ID` so sessions survive deploys). Setting an explicit random `NEXTAUTH_SECRET` in the dashboard is still **recommended** for production so the key is independent of Render internals.
 
 ### Forgot admin password (ops)
 
