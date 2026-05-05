@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Save, Check, Loader2, Home, Stethoscope, Microscope, Activity, Info, ChevronDown, ChevronUp } from 'lucide-react'
-import { adminFetch } from '@/lib/admin-client'
+import { adminFetch, checkAdminSession } from '@/lib/admin-client'
 
 interface Content {
   id: number
@@ -117,12 +117,14 @@ export default function ContentsPage() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
-    if (!token) {
-      router.push('/admin/login')
-      return
-    }
-    fetchContents()
+    void (async () => {
+      const ok = await checkAdminSession()
+      if (!ok) {
+        router.push('/admin/login')
+        return
+      }
+      fetchContents()
+    })()
   }, [router])
 
   // Expand all sections when category changes

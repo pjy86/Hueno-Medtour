@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { BCRYPT_SALT_ROUNDS } from '../src/lib/admin-password-policy'
 
 const prisma = new PrismaClient()
 
@@ -332,7 +333,7 @@ async function main() {
     where: { username: 'admin' }
   })
   if (!existingAdmin) {
-    const hashedPassword = await bcrypt.hash('admin123', 10)
+    const hashedPassword = await bcrypt.hash('admin123', BCRYPT_SALT_ROUNDS)
     await prisma.admin.create({
       data: {
         username: 'admin',
