@@ -1,3 +1,4 @@
+import { createHash } from 'crypto'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
@@ -10,13 +11,37 @@ export interface AdminJwtPayload {
 
 const WEAK_DEFAULT_SECRET = 'secret'
 
+/** Render sets `IS_PULL_REQUEST=true` for PR preview deployments only. See https://render.com/docs/environment-variables */
+function isRenderPullRequestPreview(): boolean {
+  return process.env.IS_PULL_REQUEST === 'true'
+}
+
+/**
+ * Deterministic JWT secret per preview deploy (distinct from prod). Allows admin login on
+ * PR previews when NEXTAUTH_SECRET is not synced from the prod service blueprint.
+ */
+function deriveRenderPreviewJwtSecret(): string {
+  const entropy = [
+    'hntravel-admin-jwt-v1',
+    process.env.RENDER_SERVICE_ID ?? '',
+    process.env.RENDER_GIT_COMMIT ?? '',
+    process.env.RENDER_EXTERNAL_URL ?? ''
+  ].join('|')
+  return createHash('sha256').update(entropy).digest('hex')
+}
+
 /**
  * Resolves JWT signing key: `ADMIN_JWT_SECRET` overrides `NEXTAUTH_SECRET`.
  * In production: must set a strong value; `'secret'` is rejected.
+ * On Render pull request previews, if those are unset, a per-preview derived secret is used.
  */
 export function resolveAdminJwtSecret(): { secret: string } | { response: NextResponse } {
   const isProd = process.env.NODE_ENV === 'production'
-  const raw = (process.env.ADMIN_JWT_SECRET || process.env.NEXTAUTH_SECRET || '').trim()
+  let raw = (process.env.ADMIN_JWT_SECRET || process.env.NEXTAUTH_SECRET || '').trim()
+
+  if (!raw && isProd && isRenderPullRequestPreview()) {
+    raw = deriveRenderPreviewJwtSecret()
+  }
 
   if (!raw) {
     if (isProd) {
