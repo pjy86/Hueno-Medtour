@@ -210,7 +210,7 @@ async function main() {
     { key: 'cancer_step_6_desc', en: 'Ongoing monitoring and coordination with your home doctors', zh: '持续监测和与国内医生协调', id_text: 'Pemantauan berkelanjutan dan koordinasi dengan dokter di negara Anda' },
 
     // About Us page content
-    { key: 'about_hero_title', en: 'About Us', zh: '关于我们', id_text: 'Tentang Kami' },
+    { key: 'about_hero_title', en: 'ALL WE CARE ABOUT IS YOUR HEALTH.', zh: '我们唯一关心的就是您的健康。', id_text: 'YANG KAMI PEDULI HANYALAH KESEHATAN ANDA.' },
     { key: 'about_hero_description', en: 'Hueno Medtour China is a one-stop, seamlessly connected international medical tourism service platform dedicated to delivering customized, world-class and affordable medical tourism solutions centered on China\'s premium healthcare resources.', zh: 'Hueno Medtour China 是一站式、无缝连接的国际医疗旅游服务平台，致力于以中国优质医疗资源为核心，提供定制化、世界级、高性价比的医疗旅游解决方案。', id_text: 'Hueno Medtour China adalah platform layanan pariwisata medis internasional satu atap yang terhubung secara mulus, didedikasikan untuk memberikan solusi pariwisata medis yang disesuaikan, kelas dunia, dan terjangkau yang berpusat pada sumber daya perawatan kesehatan premium China.' },
   ]
 

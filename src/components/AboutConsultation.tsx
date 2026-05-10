@@ -215,7 +215,7 @@ export default function AboutConsultation() {
               {/* Medical Needs */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  What medical needs you have? *
+                  What medical needs do you have? *
                 </label>
                 <textarea
                   name="medicalNeeds"

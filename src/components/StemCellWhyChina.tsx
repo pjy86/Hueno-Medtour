@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
+import { cmsFieldToHtmlFragment } from '@/lib/cms-html'
 
 export default function StemCellWhyChina() {
   const t = useTranslations('stemcell')
@@ -70,10 +71,15 @@ export default function StemCellWhyChina() {
                   {item.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed text-center">
-                  {item.desc}
-                </p>
+                {/* CMS: HTML 与换行；纯文本换行会转为 br */}
+                {item.desc.trim() !== '' && (
+                  <div
+                    className="text-gray-600 text-sm leading-relaxed text-center rich-text-content"
+                    dangerouslySetInnerHTML={{
+                      __html: cmsFieldToHtmlFragment(item.desc)
+                    }}
+                  />
+                )}
               </div>
             ))}
           </div>
