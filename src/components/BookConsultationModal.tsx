@@ -268,7 +268,7 @@ export default function BookConsultationModal({ isOpen, onClose }: BookConsultat
             ) : (
               <>
                 <Send size={20} />
-                Book Consultation
+                Submit
               </>
             )}
           </button>

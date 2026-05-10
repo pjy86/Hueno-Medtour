@@ -202,7 +202,7 @@ async function main() {
     { key: 'cancer_step_2_desc', en: 'Multidisciplinary team designs a personalized treatment plan', zh: '多学科团队制定个性化治疗方案', id_text: 'Tim multidisiplin merancang rencana perawatan personal' },
     { key: 'cancer_step_3_title', en: 'Travel Arrangement', zh: '出行安排', id_text: 'Pengaturan Perjalanan' },
     { key: 'cancer_step_3_desc', en: 'We handle visa, flights, accommodation and airport pickup', zh: '我们办理签证、航班、住宿和接机', id_text: 'Kami menangani visa, penerbangan, akomodasi, dan penjemputan bandara' },
-    { key: 'cancer_step_4_title', en: 'Treatment in China', zh: '在华治疗', id_text: 'Perawatan di Tiongkok' },
+    { key: 'cancer_step_4_title', en: 'Services in China', zh: '在华服务', id_text: 'Layanan di Tiongkok' },
     { key: 'cancer_step_4_desc', en: 'Receive world-class treatment with bilingual medical support', zh: '在双语医疗支持下接受世界级治疗', id_text: 'Terima perawatan kelas dunia dengan dukungan medis bilingual' },
     { key: 'cancer_step_5_title', en: 'Post-Treatment Care', zh: '治疗后护理', id_text: 'Perawatan Pasca-Perawatan' },
     { key: 'cancer_step_5_desc', en: 'Recovery support and follow-up consultations', zh: '恢复支持和后续咨询', id_text: 'Dukungan pemulihan dan konsultasi tindak lanjut' },
@@ -213,6 +213,19 @@ async function main() {
     { key: 'about_hero_title', en: 'ALL WE CARE ABOUT IS YOUR HEALTH.', zh: '我们唯一关心的就是您的健康。', id_text: 'YANG KAMI PEDULI HANYALAH KESEHATAN ANDA.' },
     { key: 'about_hero_description', en: 'Hueno Medtour China is a one-stop, seamlessly connected international medical tourism service platform dedicated to delivering customized, world-class and affordable medical tourism solutions centered on China\'s premium healthcare resources.', zh: 'Hueno Medtour China 是一站式、无缝连接的国际医疗旅游服务平台，致力于以中国优质医疗资源为核心，提供定制化、世界级、高性价比的医疗旅游解决方案。', id_text: 'Hueno Medtour China adalah platform layanan pariwisata medis internasional satu atap yang terhubung secara mulus, didedikasikan untuk memberikan solusi pariwisata medis yang disesuaikan, kelas dunia, dan terjangkau yang berpusat pada sumber daya perawatan kesehatan premium China.' },
   ]
+
+  // Sync renamed Treatment Process step title (only when English still matches legacy copy)
+  await prisma.content.updateMany({
+    where: {
+      key: 'cancer_step_4_title',
+      en: 'Treatment in China',
+    },
+    data: {
+      en: 'Services in China',
+      zh: '在华服务',
+      id_text: 'Layanan di Tiongkok',
+    },
+  })
 
   // Only create content if it doesn't exist (to preserve user edits)
   for (const content of contents) {

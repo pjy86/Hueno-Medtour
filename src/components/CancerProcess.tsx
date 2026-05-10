@@ -24,7 +24,6 @@ export default function CancerProcess() {
     if (title || desc) {
       steps.push({
         key: `cancer_step_${i}`,
-        title: title || '',
         desc: desc || '',
         iconUrl
       })
@@ -66,10 +65,6 @@ export default function CancerProcess() {
                     </div>
                   )}
                 </div>
-
-                <h3 className="text-lg font-bold text-[#1a3a5c] mb-2">
-                  {step.title}
-                </h3>
 
                 <div
                   className="text-gray-600 text-sm leading-relaxed rich-text-content"
