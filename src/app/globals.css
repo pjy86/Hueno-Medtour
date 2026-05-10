@@ -45,3 +45,43 @@ main {
   max-width: 100%;
   overflow-wrap: break-word;
 }
+
+/* CMS checkup packages: allow <strong>, <h5>, lists, breaks from admin-authored HTML */
+.checkup-package-cms :where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: #1a3a5c;
+}
+.checkup-package-cms :where(h5) {
+  font-size: 0.9375rem; /* slight heading lift vs body 0.875rem */
+  margin-top: 0.375rem;
+  margin-bottom: 0.125rem;
+  line-height: 1.35;
+}
+.checkup-package-cms :where(h5):first-child {
+  margin-top: 0;
+}
+.checkup-package-cms :where(strong, b) {
+  font-weight: 700;
+  color: #1a3a5c;
+}
+.checkup-package-cms :where(a) {
+  color: #1861d7;
+  text-decoration: underline;
+}
+.checkup-package-cms :where(ul, ol) {
+  margin: 0.25rem 0 0;
+  padding-left: 1.15rem;
+  list-style-position: outside;
+}
+.checkup-package-cms :where(p) {
+  margin: 0.25rem 0 0;
+}
+.checkup-package-cms :where(p):first-child,
+.checkup-package-cms > div > :first-child {
+  margin-top: 0;
+}
+.checkup-package-cms :where(li) {
+  margin-top: 0.125rem;
+}

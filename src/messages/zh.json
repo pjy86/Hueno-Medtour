@@ -33,7 +33,8 @@
   },
   "services": {
     "title": "我们的服务",
-    "bookNow": "立即预约",
+    "disclaimer": "*我们只提供就医协调与支持服务，不提供医疗诊断。",
+    "bookNow": "免费咨询",
     "service1": {
       "title": "医疗咨询",
       "desc": "专家诊断与治疗方案"

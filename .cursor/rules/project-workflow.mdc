@@ -17,3 +17,13 @@ npx tsc --noEmit
 If type errors are found, fix them before pushing. This prevents deploy failures on Render.
 
 **Why:** The build script (`npm run build`) runs `prisma generate && tsc --noEmit && next build`. The `tsc --noEmit` step performs full static type checking, which `next dev` skips entirely. Code that works locally in dev mode can still fail the production build.
+
+---
+
+## 代码提交流程（Git / Pull Request，默认）
+
+- **默认做法**：在完成本地修改后，**不要直接将日常功能改动 push 到 `main`**。从 `main` 拉出或直接基于远端创建 **独立分支**，提交并 `push` 后，在 GitHub 上创建 **Pull Request**，**base（目标分支）为 `main`**，保持 PR 处于 **Open** 状态直至合并。
+- **预发布验证**：在 Render Web Service 已开启 **Automatic Pull Request Previews** 时，上述 PR 会触发与生产一致的云端构建预览；请在合并前按需完成预览环境下的验收。**直接 push 到 `main` 不会走 PR 预览链路**，只会触发对 `main` 的常规自动部署（若已开启）。
+- **正式上线**：预览与审查通过后，在 GitHub **Merge PR 到 `main`**。生产环境（绑定 `main` 的 Render 服务）会执行正式构建与部署。
+- **例外**：仅在任务中**明确要求**，或团队约定的紧急热修等情形下，可直接提交到 **`main`**；需在协作沟通中注明原因。
+- （可选）建议在 GitHub 为 **`main`** 配置 **branch protection**，要求通过 PR 合并，减少误直达生产。

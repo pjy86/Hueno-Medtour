@@ -33,7 +33,8 @@
   },
   "services": {
     "title": "Layanan Kami",
-    "bookNow": "Pesan Sekarang",
+    "disclaimer": "*Kami hanya menawarkan koordinasi medis dan layanan dukungan, bukan diagnosis medis.",
+    "bookNow": "Konsultasi gratis",
     "service1": {
       "title": "Konsultasi Medis",
       "desc": "Diagnosis ahli dan perencanaan perawatan"
