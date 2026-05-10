@@ -20,12 +20,12 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden scroll-mt-28 bg-white"
+      className="relative min-h-[105vh] flex items-center justify-center overflow-hidden scroll-mt-[6.5rem] lg:scroll-mt-[7.5rem] bg-white"
     >
       {/* Background Image - Only show if configured */}
       {bgImage && (
         <div
-          className="absolute inset-0 bg-cover bg-right bg-no-repeat md:bg-center"
+          className="absolute inset-0 bg-cover bg-right-top bg-no-repeat md:bg-center-top xl:bg-[length:100%_auto] xl:bg-center-top"
           style={{
             backgroundImage: `url(${bgImage})`
           }}
