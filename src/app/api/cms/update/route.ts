@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { requireAdmin } from '@/lib/admin-auth'
+import { isDeprecatedCheckupPackageContentKey } from '@/lib/cms-deprecated-keys'
 
 export async function PUT(request: NextRequest) {
   const authResult = requireAdmin(request)
@@ -19,6 +20,20 @@ export async function PUT(request: NextRequest) {
           { error: 'Items array is required for batch update' },
           { status: 400 }
         )
+      }
+
+      for (const item of items as { type: string; key: string; en?: string | null; zh?: string | null; id_text?: string | null; url?: string | null }[]) {
+        if (
+          item.type === 'content' &&
+          isDeprecatedCheckupPackageContentKey(item.key)
+        ) {
+          return NextResponse.json(
+            {
+              error: `Deprecated content key (use checkup_package_N_content only): ${item.key}`
+            },
+            { status: 410 }
+          )
+        }
       }
 
       const results = await prisma.$transaction(async (tx) => {
@@ -55,6 +70,15 @@ export async function PUT(request: NextRequest) {
     }
 
     if (type === 'content') {
+      if (isDeprecatedCheckupPackageContentKey(key)) {
+        return NextResponse.json(
+          {
+            error:
+              'This content key is retired. Use checkup_package_N_content only for package body text.'
+          },
+          { status: 410 }
+        )
+      }
       const content = await prisma.content.upsert({
         where: { key },
         update: { en, zh, id_text },
