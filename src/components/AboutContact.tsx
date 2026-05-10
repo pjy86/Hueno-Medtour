@@ -1,6 +1,7 @@
 'use client'
 
-import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin } from 'lucide-react'
+import WhatsAppGlyph from '@/components/icons/WhatsAppGlyph'
 
 export default function AboutContact() {
   return (
@@ -28,7 +29,7 @@ export default function AboutContact() {
 
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-[#E1EDFB] rounded-full flex items-center justify-center shrink-0">
-                <MessageCircle size={18} className="text-[#1861D7]" />
+                <WhatsAppGlyph className="h-[18px] w-[18px] shrink-0 text-[#1861D7]" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-gray-500 mb-1">WhatsApp</p>
@@ -61,11 +62,9 @@ export default function AboutContact() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-gray-500 mb-1">Address</p>
-                <p className="text-gray-800 whitespace-pre-line leading-relaxed">
-                  Building 10, Minjie Shangcheng International{'\n'}
-                  Wanbo Business District, Nancun Town{'\n'}
-                  Panyu District, Guangzhou{'\n'}
-                  Guangdong Province, P.R.China
+                <p className="text-gray-800 leading-relaxed">
+                  Building 10, Minjie Shangcheng International Wanbo Business District,
+                  Nancun Town Panyu District, Guangzhou, Guangdong Province, P.R.China
                 </p>
               </div>
             </div>

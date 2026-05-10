@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Save, Check, Loader2, Home, Stethoscope, Microscope, Activity, Info, ChevronDown, ChevronUp } from 'lucide-react'
 import { adminFetch, checkAdminSession } from '@/lib/admin-client'
+import { DEPRECATED_CHECKUP_PACKAGE_SPLIT_KEYS } from '@/lib/cms-deprecated-keys'
 
 interface Content {
   id: number
@@ -62,7 +63,8 @@ const hiddenKeys = [
   /^feature_4_/,
   /^checkup_service_\d+_title$/,
   /^stemcell_advantage_\d+_desc$/,
-  /^cancer_step_\d+_title$/
+  /^cancer_step_\d+_title$/,
+  DEPRECATED_CHECKUP_PACKAGE_SPLIT_KEYS
 ]
 
 interface SectionGroup {

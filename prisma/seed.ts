@@ -7,6 +7,19 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('Seeding database...')
 
+  const deprecatedPackageFieldKeys = [1, 2, 3, 4].flatMap((i) => [
+    `checkup_package_${i}_desc`,
+    `checkup_package_${i}_crowd`,
+    `checkup_package_${i}_highlight`,
+    `checkup_package_${i}_items`,
+  ])
+  const removed = await prisma.content.deleteMany({
+    where: { key: { in: deprecatedPackageFieldKeys } },
+  })
+  if (removed.count > 0) {
+    console.log(`Removed deprecated package fields: ${removed.count} row(s)`)
+  }
+
   // Create default content - only create if not exists
   const contents = [
     // Hero section

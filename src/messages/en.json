@@ -33,7 +33,8 @@
   },
   "services": {
     "title": "Our Services",
-    "bookNow": "Book Now",
+    "disclaimer": "*We offer medical coordination and support services only, not medical diagnosis.",
+    "bookNow": "Free consultation",
     "service1": {
       "title": "Medical Consultation",
       "desc": "Expert diagnosis and treatment planning"

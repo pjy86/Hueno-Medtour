@@ -1,8 +1,9 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { Mail, MessageCircle, Facebook, Instagram } from 'lucide-react'
+import { Mail, Facebook, Instagram } from 'lucide-react'
 import { useCMS, getContentByKey, getImageByKey, type CMSData } from '@/components/CMSProvider'
+import WhatsAppGlyph from '@/components/icons/WhatsAppGlyph'
 
 const DEFAULT_EMAIL = 'huenomedtour@163.com'
 const DEFAULT_PHONE = '+86 13244819680'
@@ -130,7 +131,7 @@ export default function TopBar() {
             {iconUrl(phoneIcon) ? (
               <TopBarIcon src={phoneIcon} alt="" />
             ) : (
-              <MessageCircle className="h-4 w-4 shrink-0" strokeWidth={2} />
+              <WhatsAppGlyph className="h-4 w-4 shrink-0" />
             )}
             <span className="truncate">{phone}</span>
           </a>

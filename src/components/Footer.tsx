@@ -1,8 +1,9 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { Phone, MessageCircle, Mail } from 'lucide-react'
+import { Phone, Mail } from 'lucide-react'
 import { useCMS, getImageByKey } from '@/components/CMSProvider'
+import WhatsAppGlyph from '@/components/icons/WhatsAppGlyph'
 
 export default function Footer() {
   const t = useTranslations('footer')
@@ -30,12 +31,10 @@ export default function Footer() {
           {/* Part 3: Address */}
           <div>
             <h4 className="font-semibold text-lg mb-4">Address</h4>
-            <p className="text-white/70 text-sm leading-relaxed whitespace-pre-line">
-              Building 10, Minjie Shangcheng International{'\n'}
-              Wanbo Business District, Nancun Town{'\n'}
-              Panyu District, Guangzhou{'\n'}
-              Guangdong Province, P.R.China
-            </p>
+            <address className="text-white/70 text-sm leading-relaxed not-italic">
+              Building 10, Minjie Shangcheng International Wanbo Business District,
+              Nancun Town Panyu District, Guangzhou, Guangdong Province, P.R.China
+            </address>
           </div>
 
           {/* Part 4: Contact Us */}
@@ -47,7 +46,7 @@ export default function Footer() {
                 <span>+86 13244819680</span>
               </div>
               <div className="flex items-center gap-3 text-white/70 text-sm">
-                <MessageCircle size={16} />
+                <WhatsAppGlyph className="h-4 w-4 shrink-0" />
                 <span>+86 13244819680</span>
               </div>
               <div className="flex items-center gap-3 text-white/70 text-sm">

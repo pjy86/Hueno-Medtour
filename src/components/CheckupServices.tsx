@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { Clock, Languages, Camera, UserCheck, FileText, CreditCard } from 'lucide-react'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
+import { cmsFieldToHtmlFragment } from '@/lib/cms-html'
 
 const iconMap: Record<string, React.ElementType> = {
   Clock,
@@ -89,10 +90,11 @@ export default function CheckupServices() {
                   )}
                 </div>
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {service.desc}
-                </p>
+                {/* CMS: HTML 与换行均可；纯文本里的换行会转为 br（见 cmsFieldToHtmlFragment） */}
+                <div
+                  className="text-gray-600 text-sm leading-relaxed rich-text-content"
+                  dangerouslySetInnerHTML={{ __html: cmsFieldToHtmlFragment(service.desc) }}
+                />
               </div>
             )
           })}
