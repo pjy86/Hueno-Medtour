@@ -411,7 +411,7 @@ export default function ContactsPage() {
                 <p className="text-gray-900">{selectedContact.phone || 'Not provided'}</p>
               </div>
               <div>
-                <label className="text-xs font-medium text-gray-500">What medical needs you have?</label>
+                <label className="text-xs font-medium text-gray-500">What medical needs do you have?</label>
                 <p className="text-gray-900 whitespace-pre-wrap">{selectedContact.medicalNeeds || 'Not provided'}</p>
               </div>
               {selectedContact.message && (

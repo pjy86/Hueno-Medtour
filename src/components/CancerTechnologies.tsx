@@ -1,11 +1,10 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
+import { cmsFieldToHtmlFragment } from '@/lib/cms-html'
 
 export default function CancerTechnologies() {
-  const t = useTranslations('cancer')
   const params = useParams()
   const locale = (params.locale as string) || 'en'
   const cmsData = useCMS()
@@ -61,9 +60,10 @@ export default function CancerTechnologies() {
                 {tech.title}
               </h3>
 
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {tech.desc}
-              </p>
+              <div
+                className="text-gray-600 text-sm leading-relaxed rich-text-content"
+                dangerouslySetInnerHTML={{ __html: cmsFieldToHtmlFragment(tech.desc) }}
+              />
             </div>
           ))}
         </div>

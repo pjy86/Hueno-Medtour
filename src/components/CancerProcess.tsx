@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { useCMS, getContentByKey, getImageByKey } from '@/components/CMSProvider'
+import { cmsFieldToHtmlFragment } from '@/lib/cms-html'
 import BookConsultationModal from './BookConsultationModal'
 import { useState } from 'react'
 
@@ -23,7 +24,6 @@ export default function CancerProcess() {
     if (title || desc) {
       steps.push({
         key: `cancer_step_${i}`,
-        title: title || '',
         desc: desc || '',
         iconUrl
       })
@@ -66,21 +66,18 @@ export default function CancerProcess() {
                   )}
                 </div>
 
-                <h3 className="text-lg font-bold text-[#1a3a5c] mb-2">
-                  {step.title}
-                </h3>
-
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {step.desc}
-                </p>
+                <div
+                  className="text-gray-600 text-sm leading-relaxed rich-text-content"
+                  dangerouslySetInnerHTML={{ __html: cmsFieldToHtmlFragment(step.desc) }}
+                />
               </div>
             ))}
           </div>
 
-          {/* Copyright & CTA */}
+          {/* Disclaimer & CTA */}
           <div className="max-w-4xl mx-auto mt-12 text-center">
             <p className="text-gray-500 text-sm mb-6">
-              All We Care About Is Your Health.©2026 HuenoMedtourChina. All Rights Reserved
+              {t('processDisclaimer')}
             </p>
             <button
               onClick={() => setIsModalOpen(true)}

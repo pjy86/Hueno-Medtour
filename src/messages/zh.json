@@ -112,18 +112,20 @@
     "defaultSubtitle": "快速、精准、全面的健康筛查——世界级医疗设施与透明定价"
   },
   "stemcell": {
+    "boaoDisclaimer": "*我们仅提供医疗协调和支持服务，不提供医疗诊断。",
     "bookNow": "立即预约",
     "freeConsultation": "免费咨询",
     "defaultTitle": "中国干细胞治疗",
     "defaultSubtitle": "先进再生医学，世界级设施与专业护理"
   },
   "cancer": {
+    "processDisclaimer": "*我们只提供医疗协调与支持服务，不提供医学诊断。",
     "freeConsultation": "免费咨询",
     "defaultTitle": "中国肿瘤与癌症治疗",
     "defaultSubtitle": "世界级癌症护理，先进技术与贴心关怀"
   },
   "about": {
-    "defaultTitle": "关于我们",
+    "defaultTitle": "我们唯一关心的就是您的健康。",
     "defaultDescription": "Hueno Medtour China 是一站式、无缝连接的国际医疗旅游服务平台，致力于以中国优质医疗资源为核心，提供定制化、世界级、高性价比的医疗旅游解决方案。"
   }
 }

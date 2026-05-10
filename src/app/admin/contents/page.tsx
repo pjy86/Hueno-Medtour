@@ -253,6 +253,9 @@ export default function ContentsPage() {
            key === 'checkup_hero_title' || key === 'checkup_hero_subtitle' ||
            key === 'stemcell_hero_title' || key === 'stemcell_hero_subtitle' ||
            key === 'stemcell_boao_desc' ||
+           /^stemcell_program_\d+_desc$/.test(key) ||
+           /^stemcell_why_china_\d+_desc$/.test(key) ||
+           /^cancer_technology_\d+_desc$/.test(key) ||
            key === 'cancer_hero_title' || key === 'cancer_hero_subtitle' ||
            key === 'about_hero_title' || key === 'about_hero_description'
   }

@@ -62,7 +62,7 @@ export default function StemCellBoaoZone() {
           {/* Copyright & CTA */}
           <div className="max-w-4xl mx-auto mt-12 text-center">
             <p className="text-gray-500 text-sm mb-6">
-              All We Care About Is Your Health.©2026 HuenoMedtourChina. All Rights Reserved
+              {t('boaoDisclaimer')}
             </p>
             <button
               onClick={() => setIsModalOpen(true)}
