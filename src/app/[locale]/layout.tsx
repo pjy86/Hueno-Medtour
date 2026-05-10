@@ -33,7 +33,13 @@ export default async function LocaleLayout({ children, params }: Props) {
     <NextIntlClientProvider messages={messages}>
       <CMSProvider initialData={cmsData}>
         <TopBar />
-        {children}
+        {/*
+          Reserve space for fixed chrome: TopBar (h-10) + Header nav (h-16 / lg:h-20).
+          globals.css also sets main padding-top for legacy/admin; zero it here so we don't double-offset.
+        */}
+        <div className="pt-[calc(2.5rem+4rem)] lg:pt-[calc(2.5rem+5rem)] [&_main]:pt-0">
+          {children}
+        </div>
       </CMSProvider>
     </NextIntlClientProvider>
   )

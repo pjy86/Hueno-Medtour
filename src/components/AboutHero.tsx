@@ -17,9 +17,9 @@ export default function AboutHero() {
   return (
     <section
       id="top"
-      className="relative flex items-center justify-center overflow-hidden scroll-mt-28 bg-[#E1EDFB]"
+      className="relative flex items-center justify-center overflow-hidden scroll-mt-[6.5rem] lg:scroll-mt-[7.5rem] bg-[#E1EDFB]"
     >
-      <div className="w-full px-4 lg:px-16 py-20 lg:py-28">
+      <div className="w-full px-4 lg:px-16 py-[5.25rem] lg:py-[7.35rem]">
         <div className="text-center space-y-6">
           <div className="max-w-6xl mx-auto">
             <h1
