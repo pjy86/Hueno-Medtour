@@ -41,22 +41,22 @@ export default function CheckupHero() {
         </div>
 
         <div className="absolute inset-0 z-10 flex flex-col justify-center pointer-events-none">
-          <div className="pointer-events-auto mx-auto w-full max-w-site px-4 lg:px-16 py-16 md:py-20 relative">
+          <div className="pointer-events-auto mx-auto w-full max-w-site px-4 lg:px-16 py-12 md:py-20 relative">
             <div className="max-w-3xl">
               <div className="space-y-6">
                 <h1
-                  className="font-bold text-[#1a3a5c] leading-tight text-left text-4xl md:text-5xl lg:text-[3.5rem]"
+                  className="font-bold text-[#1a3a5c] leading-tight text-left text-3xl md:text-5xl lg:text-[3.5rem]"
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
 
                 <div
-                  className="text-lg md:text-xl text-gray-600 text-left leading-relaxed max-w-2xl"
+                  className="text-base md:text-xl text-gray-600 text-left leading-relaxed max-w-2xl"
                   dangerouslySetInnerHTML={{ __html: subtitle }}
                 />
 
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl w-full sm:w-auto"
                 >
                   {t('bookNow')}
                   <ArrowRight size={20} />

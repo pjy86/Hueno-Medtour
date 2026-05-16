@@ -39,13 +39,13 @@ export default function Hero() {
         )}
       </div>
 
-      <div className="absolute inset-0 z-10 flex flex-col justify-center pointer-events-none">
-        <div className="pointer-events-auto mx-auto w-full max-w-site px-4 lg:px-16 py-16 md:py-28 relative">
+        <div className="absolute inset-0 z-10 flex flex-col justify-center pointer-events-none">
+        <div className="pointer-events-auto mx-auto w-full max-w-site px-4 lg:px-16 py-12 md:py-28 relative">
           <div className="max-w-3xl">
             {/* Main Title - Rich Text */}
             {title && (
               <h1
-                className="font-bold text-[#1a3a5c] mb-6 leading-tight text-left text-4xl md:text-5xl lg:text-6xl xl:text-[4rem]"
+                className="font-bold text-[#1a3a5c] mb-4 md:mb-6 leading-tight text-left text-3xl md:text-5xl lg:text-6xl xl:text-[4rem]"
                 dangerouslySetInnerHTML={{ __html: title }}
               />
             )}
@@ -53,53 +53,36 @@ export default function Hero() {
             {/* Subtitle - Rich Text */}
             {subtitle && (
               <div
-                className="text-xl md:text-2xl text-gray-600 mb-8 text-left"
+                className="text-base md:text-2xl text-gray-600 mb-6 md:mb-8 text-left"
                 dangerouslySetInnerHTML={{ __html: subtitle }}
               />
             )}
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
               <button
                 onClick={() => router.push(`/${locale}/checkup`)}
-                className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer w-full sm:w-auto"
               >
                 Checkup
                 <ArrowRight size={20} />
               </button>
               <button
                 onClick={() => router.push(`/${locale}/stem-cell`)}
-                className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer w-full sm:w-auto"
               >
                 Stem Cell
                 <ArrowRight size={20} />
               </button>
               <button
                 onClick={() => router.push(`/${locale}/cancer-oncology`)}
-                className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer w-full sm:w-auto"
               >
                 Cancer & Oncology
                 <ArrowRight size={20} />
               </button>
             </div>
           </div>
-
-          {/* Decorative Elements */}
-          <div className="absolute bottom-8 right-8 hidden lg:block">
-            <div className="flex gap-4">
-              <div className="w-2 h-2 bg-[#a8ddf9] rounded-full" />
-              <div className="w-2 h-2 bg-white/50 rounded-full" />
-              <div className="w-2 h-2 bg-white/50 rounded-full" />
-              <div className="w-2 h-2 bg-white/50 rounded-full" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2 lg:hidden">
-        <div className="w-6 h-10 border-2 border-gray-400/60 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-gray-500 rounded-full animate-bounce" />
         </div>
       </div>
     </section>
