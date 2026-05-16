@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        /** Align public layout with reference site (~1400px content rail). */
+        site: '1400px'
+      },
       colors: {
         primary: {
           DEFAULT: '#1a3a5c',
@@ -17,7 +21,7 @@ module.exports = {
           hover: '#3d8fd4'
         }
       }
-    },
+    }
   },
   plugins: [],
 }

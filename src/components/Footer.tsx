@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#1a3a5c] text-white py-12">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Part 1: Logo */}
           {logoUrl && (
