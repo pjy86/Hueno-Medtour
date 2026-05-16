@@ -83,7 +83,7 @@ export default function CheckupPackages() {
           </div>
 
           {/* Packages List */}
-          <div className="space-y-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {packages.map((pkg, index) => {
               const fallback = defaults[index]
               const titleRaw = getContentByKey(cmsData, pkg.titleKey, locale)

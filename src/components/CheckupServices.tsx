@@ -65,7 +65,7 @@ export default function CheckupServices() {
         </div>
 
         {/* Services Grid - 2 rows x 3 columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const IconComponent = iconMap[service.iconName] || Clock
             const customIconUrl = getImageByKey(cmsData, service.iconKey)

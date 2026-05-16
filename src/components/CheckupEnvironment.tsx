@@ -33,7 +33,7 @@ export default function CheckupEnvironment() {
           </div>
 
           {/* Image Grid - 2 rows x 2 columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 gap-4 lg:gap-6 max-w-5xl mx-auto">
             {images.map((img, index) => (
               <div
                 key={index}
