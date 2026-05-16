@@ -62,7 +62,7 @@ export default function Features() {
   ]
 
   return (
-    <section id="stem-cell" className="py-20 bg-white scroll-mt-28">
+    <section id="stem-cell" className="py-8 md:py-12 bg-white scroll-mt-28">
       <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
@@ -73,7 +73,7 @@ export default function Features() {
 
         {/* Features Grid */}
         {/* Match WhyChina grid: gap-6, no card padding → same column width & image size at sm:grid-cols-2 */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ key, title, subtitle, desc, image }) => (
             <div
               key={key}

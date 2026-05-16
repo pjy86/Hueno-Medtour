@@ -87,7 +87,7 @@ export default function Header() {
   }
 
   const linkClass =
-    'text-sm font-normal text-gray-900 hover:text-[#1861D7] transition-colors cursor-pointer'
+    'text-base font-normal text-gray-900 hover:text-[#1861D7] transition-colors cursor-pointer'
   const mobileLinkClass = `${linkClass} px-4 py-2 rounded-lg hover:bg-gray-100`
 
   return (
@@ -118,7 +118,7 @@ export default function Header() {
           </a>
 
           <div className="hidden min-w-0 flex-1 items-center justify-center lg:flex">
-            <div className="flex max-w-3xl flex-wrap items-center justify-center gap-x-3 gap-y-1 xl:gap-x-5">
+            <div className="flex max-w-3xl flex-wrap items-center justify-center gap-x-14 gap-y-1 xl:gap-x-20">
               {NAV_IDS.map(id => {
                 const href = id === 'top' ? '#top' : `#${id}`
                 return (

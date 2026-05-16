@@ -34,7 +34,7 @@ export default function StemCellWhyChina() {
   }
 
   return (
-    <section id="why-china" className="py-20 bg-white scroll-mt-28">
+    <section id="why-china" className="py-8 md:py-12 bg-white scroll-mt-28">
       <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
@@ -45,7 +45,7 @@ export default function StemCellWhyChina() {
 
         {/* Items Grid - 2 rows x 3 columns for 6 items */}
         {items.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {items.map((item) => (
               <div
                 key={item.key}

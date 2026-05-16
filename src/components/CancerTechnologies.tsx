@@ -32,15 +32,15 @@ export default function CancerTechnologies() {
   }
 
   return (
-    <section id="technologies" className="py-20 bg-white scroll-mt-28">
+    <section id="technologies" className="py-8 md:py-12 bg-white scroll-mt-28">
       <div className="mx-auto w-full max-w-site px-4 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
             {sectionTitle || 'Advanced Cancer Treatment Technologies'}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {technologies.map((tech) => (
             <div
               key={tech.key}

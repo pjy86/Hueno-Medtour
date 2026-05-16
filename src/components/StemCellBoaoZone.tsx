@@ -24,10 +24,10 @@ export default function StemCellBoaoZone() {
 
   return (
     <>
-      <section id="boao-zone" className="py-20 bg-white scroll-mt-28">
+      <section id="boao-zone" className="py-8 md:py-12 bg-white scroll-mt-28">
         <div className="mx-auto w-full max-w-site px-4 lg:px-8">
           {/* Section Title */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
               {sectionTitle || 'About Boao Lecheng International Medical Tourism Pilot Zone'}
             </h2>
