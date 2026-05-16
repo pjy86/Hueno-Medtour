@@ -55,7 +55,7 @@ export default function CheckupProcess() {
 
   return (
     <section id="process" className="py-20 bg-white scroll-mt-28">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
@@ -64,7 +64,7 @@ export default function CheckupProcess() {
         </div>
 
         {/* Process Grid - 2 rows x 3 columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {steps.map((step, index) => {
             const DefaultIcon = defaultIcons[index] || MessageCircle
             const customIconUrl = getImageByKey(cmsData, step.iconKey)

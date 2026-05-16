@@ -60,7 +60,7 @@ export default function ContactForm() {
 
   return (
     <section className="scroll-mt-28 py-20 bg-white" id="contact">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         <div className="max-w-2xl mx-auto">
           {/* Section Title */}
           <div className="text-center mb-12">

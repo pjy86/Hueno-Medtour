@@ -1,12 +1,12 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { useParams, useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { useCMS, getImageByKey, getContentByKey } from '@/components/CMSProvider'
+import HeroBackgroundImage from '@/components/HeroBackgroundImage'
+import { heroFrameHomeClass } from '@/components/hero-shared'
 
 export default function Hero() {
-  const t = useTranslations('hero')
   const params = useParams()
   const router = useRouter()
   const locale = (params.locale as string) || 'en'
@@ -15,92 +15,74 @@ export default function Hero() {
   const bgImage = getImageByKey(cmsData, 'hero_bg')
   const title = getContentByKey(cmsData, 'hero_title', locale) || ''
   const subtitle = getContentByKey(cmsData, 'hero_subtitle', locale) || ''
-  const ctaText = getContentByKey(cmsData, 'hero_cta_text', locale) || t('cta')
 
   return (
     <section
       id="top"
-      className="relative min-h-[105vh] flex items-center justify-center overflow-hidden scroll-mt-[6.5rem] lg:scroll-mt-[7.5rem] bg-white"
+      className="relative w-full min-w-0 max-w-full overflow-x-clip overflow-hidden scroll-mt-[6.5rem] lg:scroll-mt-[7.5rem] bg-white"
     >
-      {/* Background Image - Only show if configured */}
-      {bgImage && (
-        <div
-          className="absolute inset-0 bg-cover bg-right-top bg-no-repeat md:bg-center-top xl:bg-[length:100%_auto] xl:bg-center-top"
-          style={{
-            backgroundImage: `url(${bgImage})`
-          }}
-        >
-          {/* Overlay - Subtle neutral overlay */}
-          <div className="absolute inset-0 max-md:bg-white/50 md:bg-white/30" />
-          {/* Mobile: left emphasis so headline separates from right-weight background */}
-          <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent md:hidden"
-            aria-hidden
-          />
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="relative z-10 w-full px-4 lg:px-16 py-32">
-        <div className="max-w-3xl">
-          {/* Main Title - Rich Text */}
-          {title && (
-            <h1
-              className="font-bold text-[#1a3a5c] mb-6 leading-tight text-left"
-              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          )}
-
-          {/* Subtitle - Rich Text */}
-          {subtitle && (
+      <div className={heroFrameHomeClass}>
+        {bgImage ? (
+          <>
+            <HeroBackgroundImage src={bgImage} />
             <div
-              className="text-xl md:text-2xl text-gray-600 mb-8 text-left"
-              dangerouslySetInnerHTML={{ __html: subtitle }}
+              className="pointer-events-none absolute inset-0 max-md:bg-white/50 md:bg-white/30"
+              aria-hidden
             />
-          )}
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => router.push(`/${locale}/checkup`)}
-              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
-            >
-              Checkup
-              <ArrowRight size={20} />
-            </button>
-            <button
-              onClick={() => router.push(`/${locale}/stem-cell`)}
-              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
-            >
-              Stem Cell
-              <ArrowRight size={20} />
-            </button>
-            <button
-              onClick={() => router.push(`/${locale}/cancer-oncology`)}
-              className="inline-flex items-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
-            >
-              Cancer & Oncology
-              <ArrowRight size={20} />
-            </button>
-          </div>
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute bottom-8 right-8 hidden lg:block">
-          <div className="flex gap-4">
-            <div className="w-2 h-2 bg-[#a8ddf9] rounded-full" />
-            <div className="w-2 h-2 bg-white/50 rounded-full" />
-            <div className="w-2 h-2 bg-white/50 rounded-full" />
-            <div className="w-2 h-2 bg-white/50 rounded-full" />
-          </div>
-        </div>
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent md:hidden"
+              aria-hidden
+            />
+          </>
+        ) : (
+          <div className="absolute inset-0 bg-white" aria-hidden />
+        )}
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 lg:hidden">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-white rounded-full animate-bounce" />
+        <div className="absolute inset-0 z-10 flex flex-col justify-center pointer-events-none">
+        <div className="pointer-events-auto mx-auto w-full max-w-site px-4 lg:px-16 py-12 md:py-28 relative">
+          <div className="max-w-3xl">
+            {/* Main Title - Rich Text */}
+            {title && (
+              <h1
+                className="font-bold text-[#1a3a5c] mb-4 md:mb-6 leading-tight text-left text-3xl md:text-5xl lg:text-6xl xl:text-[4rem]"
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+            )}
+
+            {/* Subtitle - Rich Text */}
+            {subtitle && (
+              <div
+                className="text-base md:text-2xl text-gray-600 mb-6 md:mb-8 text-left"
+                dangerouslySetInnerHTML={{ __html: subtitle }}
+              />
+            )}
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+              <button
+                onClick={() => router.push(`/${locale}/checkup`)}
+                className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer w-full sm:w-auto"
+              >
+                Checkup
+                <ArrowRight size={20} />
+              </button>
+              <button
+                onClick={() => router.push(`/${locale}/stem-cell`)}
+                className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer w-full sm:w-auto"
+              >
+                Stem Cell
+                <ArrowRight size={20} />
+              </button>
+              <button
+                onClick={() => router.push(`/${locale}/cancer-oncology`)}
+                className="inline-flex items-center justify-center gap-2 bg-[#1861D7] hover:bg-[#1250a0] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer w-full sm:w-auto"
+              >
+                Cancer & Oncology
+                <ArrowRight size={20} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

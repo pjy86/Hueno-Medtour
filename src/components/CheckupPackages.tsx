@@ -74,7 +74,7 @@ export default function CheckupPackages() {
   return (
     <>
       <section id="packages" className="py-10 bg-white scroll-mt-28">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto w-full max-w-site px-4 lg:px-8">
           {/* Section Title */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
@@ -83,7 +83,7 @@ export default function CheckupPackages() {
           </div>
 
           {/* Packages List */}
-          <div className="space-y-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {packages.map((pkg, index) => {
               const fallback = defaults[index]
               const titleRaw = getContentByKey(cmsData, pkg.titleKey, locale)

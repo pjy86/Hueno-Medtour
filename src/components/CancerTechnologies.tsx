@@ -33,7 +33,7 @@ export default function CancerTechnologies() {
 
   return (
     <section id="technologies" className="py-20 bg-white scroll-mt-28">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
             {sectionTitle || 'Advanced Cancer Treatment Technologies'}
