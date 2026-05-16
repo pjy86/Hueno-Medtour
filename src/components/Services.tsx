@@ -40,7 +40,7 @@ export default function Services() {
   }
 
   return (
-    <section id="cancer-oncology" className="py-20 bg-white scroll-mt-28">
+    <section id="cancer-oncology" className="py-8 md:py-12 bg-white scroll-mt-28">
       <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
@@ -52,7 +52,7 @@ export default function Services() {
         {/* Services Description - Rich Text */}
         {servicesDescription && (
           <div
-            className="text-center mb-12 max-w-3xl mx-auto rich-text-content"
+            className="text-center mb-8 md:mb-12 max-w-3xl mx-auto rich-text-content"
             dangerouslySetInnerHTML={{ __html: servicesDescription }}
           />
         )}
@@ -60,7 +60,7 @@ export default function Services() {
         {/* Services Grid */}
         {services.length > 0 && (
           <div
-            className={`grid gap-6 items-start ${
+            className={`grid gap-4 md:gap-6 lg:gap-8 items-start ${
               services.length === 1 ? 'grid-cols-1 max-w-xs mx-auto' :
               services.length === 2 ? 'grid-cols-2 max-w-2xl mx-auto' :
               services.length === 3 ? 'grid-cols-3 max-w-4xl mx-auto' :

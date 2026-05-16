@@ -33,17 +33,17 @@ export default function StemCellAdvantages() {
   }
 
   return (
-    <section id="advantages" className="py-20 bg-white scroll-mt-28">
+    <section id="advantages" className="py-8 md:py-12 bg-white scroll-mt-28">
       <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1861D7]">
             {sectionTitle || 'Stem Cell Advantages'}
           </h2>
         </div>
 
         {/* Advantages Grid - 2 rows x 3 columns */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {advantages.map((advantage) => (
             <div
               key={advantage.key}

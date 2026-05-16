@@ -59,11 +59,11 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="scroll-mt-28 py-20 bg-white" id="contact">
+    <section className="scroll-mt-28 py-8 md:py-12 bg-white" id="contact">
       <div className="mx-auto w-full max-w-site px-4 lg:px-8">
         <div className="max-w-2xl mx-auto">
           {/* Section Title */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c]">
               {t('title')}
             </h2>
