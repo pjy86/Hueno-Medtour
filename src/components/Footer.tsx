@@ -59,7 +59,9 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8 text-center">
-          <p className="text-white/50 text-sm">{t('copyright')}</p>
+          <p className="text-white/50 text-sm whitespace-pre-line md:whitespace-normal">
+            {t('copyright').replace('©', '\n©')}
+          </p>
         </div>
       </div>
     </footer>
