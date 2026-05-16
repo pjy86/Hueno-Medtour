@@ -118,7 +118,7 @@ export default function Header() {
           </a>
 
           <div className="hidden min-w-0 flex-1 items-center justify-center lg:flex">
-            <div className="flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-1 xl:gap-x-10">
+            <div className="flex max-w-3xl flex-wrap items-center justify-center gap-x-14 gap-y-1 xl:gap-x-20">
               {NAV_IDS.map(id => {
                 const href = id === 'top' ? '#top' : `#${id}`
                 return (

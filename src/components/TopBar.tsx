@@ -109,7 +109,7 @@ export default function TopBar() {
       className="fixed top-0 left-0 right-0 z-[60] h-10 text-white text-xs sm:text-sm"
       style={{ backgroundColor: '#1861D7' }}
     >
-      <div className="h-full max-w-site mx-auto px-3 sm:px-4 lg:px-8 flex items-center justify-between gap-x-3">
+      <div className="h-full max-w-site mx-auto px-4 lg:px-16 flex items-center justify-between gap-x-3">
         <div className="flex items-center gap-x-2 sm:gap-x-4 min-w-0 overflow-hidden">
           <a
             href={`mailto:${email}`}
