@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Upload, Save, Check, Image as ImageIcon, X, Eye, Home, Stethoscope, Microscope, Activity, Info, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
@@ -26,7 +26,7 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
   home: (key) => {
     const homePrefixes = [
       'hero_bg', 'logo_header', 'logo_footer', 'why_china_', 'feature_icon_',
-      'service_image_', 'testimonial_'
+      'service_image_'
     ]
     const isHomeKey = homePrefixes.some(prefix => key.startsWith(prefix))
     const isCheckupKey = key.startsWith('checkup_')
@@ -53,6 +53,8 @@ const hiddenKeys = [
   'feature_icon_4'
 ]
 
+const hiddenKeyPrefixes = ['testimonial_']
+
 interface SectionGroup {
   label: string
   match: (key: string) => boolean
@@ -65,7 +67,6 @@ const sectionGroups: Record<Category, SectionGroup[]> = {
     { label: 'Features', match: (key) => key.startsWith('feature_icon_') },
     { label: 'Services', match: (key) => key.startsWith('service_image_') },
     { label: 'Why China', match: (key) => key.startsWith('why_china_') },
-    { label: 'Testimonials', match: (key) => key.startsWith('testimonial_') },
     { label: 'Top Bar', match: (key) => key.startsWith('topbar_') },
   ],
   checkup: [
@@ -100,7 +101,8 @@ export default function ImagesPage() {
   const [savedKeys, setSavedKeys] = useState<Set<string>>(new Set())
   const [savedSections, setSavedSections] = useState<Set<string>>(new Set())
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [uploadingKeys, setUploadingKeys] = useState<Set<string>>(new Set())
+  const [uploadErrors, setUploadErrors] = useState<Record<string, string>>({})
   const [activeCategory, setActiveCategory] = useState<Category>('home')
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
 
@@ -217,14 +219,53 @@ export default function ImagesPage() {
     }
   }
 
-  const handleFileSelect = (key: string, file: File) => {
+  const handleFileUpload = async (key: string, file: File, input: HTMLInputElement) => {
     const localUrl = URL.createObjectURL(file)
     setPreviewUrl(localUrl)
-    alert('图片已选择为预览状态。请复制图片到图床（如 imgur.com、cloudinary.com）获取 URL，然后粘贴到 URL 输入框中保存。')
+    setUploadErrors(prev => {
+      const next = { ...prev }
+      delete next[key]
+      return next
+    })
+    setUploadingKeys(prev => new Set([...prev, key]))
+
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('key', key)
+
+      const response = await adminFetch('/api/admin/upload', router, {
+        method: 'POST',
+        body: formData
+      })
+
+      const data = (await response.json()) as { url?: string; error?: string }
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Upload failed')
+      }
+
+      if (!data.url) {
+        throw new Error('Upload succeeded but no URL was returned')
+      }
+
+      handleUrlChange(key, data.url)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Upload failed'
+      setUploadErrors(prev => ({ ...prev, [key]: message }))
+    } finally {
+      setUploadingKeys(prev => {
+        const next = new Set(prev)
+        next.delete(key)
+        return next
+      })
+      input.value = ''
+    }
   }
 
   const filteredImages = images.filter(image => {
     if (hiddenKeys.includes(image.key)) return false
+    if (hiddenKeyPrefixes.some(prefix => image.key.startsWith(prefix))) return false
     return categoryFilters[activeCategory](image.key)
   })
 
@@ -290,7 +331,7 @@ export default function ImagesPage() {
                 {categories.find(c => c.id === activeCategory)?.label} Image Configuration
               </h2>
               <p className="text-gray-500 text-sm mt-1">
-                Enter image URLs to update images. You can host images on imgur.com, cloudinary.com, or any image hosting service.
+                Upload images directly to Cloudflare R2, or paste an existing image URL. Click Save after updating.
               </p>
             </div>
             <button
@@ -421,24 +462,42 @@ export default function ImagesPage() {
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4fa3e8] focus:border-transparent outline-none text-sm mb-3"
                               />
 
-                              <div className="flex items-center gap-3">
-                                <label className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer transition-colors">
-                                  <Upload size={16} />
-                                  <span className="text-sm font-medium">Select Image File</span>
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    ref={fileInputRef}
-                                    onChange={(e) => {
-                                      const file = e.target.files?.[0]
-                                      if (file) handleFileSelect(image.key, file)
-                                    }}
-                                  />
-                                </label>
-                                <span className="text-xs text-gray-500">
-                                  Select a file to preview, then copy image URL to the input above
-                                </span>
+                              <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-3">
+                                  <label
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                                      uploadingKeys.has(image.key)
+                                        ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                                        : 'bg-gray-100 hover:bg-gray-200 cursor-pointer'
+                                    }`}
+                                  >
+                                    {uploadingKeys.has(image.key) ? (
+                                      <Loader2 size={16} className="animate-spin" />
+                                    ) : (
+                                      <Upload size={16} />
+                                    )}
+                                    <span className="text-sm font-medium">
+                                      {uploadingKeys.has(image.key) ? 'Uploading…' : 'Upload to Cloudflare'}
+                                    </span>
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      className="hidden"
+                                      disabled={uploadingKeys.has(image.key)}
+                                      onChange={(e) => {
+                                        const file = e.target.files?.[0]
+                                        const input = e.currentTarget
+                                        if (file) void handleFileUpload(image.key, file, input)
+                                      }}
+                                    />
+                                  </label>
+                                  <span className="text-xs text-gray-500">
+                                    JPG, PNG, GIF · max 10MB · auto WebP
+                                  </span>
+                                </div>
+                                {uploadErrors[image.key] && (
+                                  <p className="text-xs text-red-600">{uploadErrors[image.key]}</p>
+                                )}
                               </div>
                             </div>
                           </div>
