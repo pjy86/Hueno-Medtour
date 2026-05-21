@@ -29,7 +29,7 @@ const categoryFilters: Record<Category, (key: string) => boolean> = {
   home: (key) => {
     const homePrefixes = [
       'hero_', 'why_china_', 'feature_', 'service_', 'services_',
-      'testimonial_', 'footer_', 'contact_', 'trust'
+      'footer_', 'contact_', 'trust'
     ]
     const isHomeKey = homePrefixes.some(prefix => key.startsWith(prefix))
     const isCheckupKey = key.startsWith('checkup_') || /^package_\d+/.test(key)
